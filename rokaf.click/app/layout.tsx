@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-['rokaf-sans-bold']">{children}</body>
+      <body className="font-sans-medium">{children}</body>
     </html>
   )
 }

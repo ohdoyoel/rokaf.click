@@ -3,8 +3,23 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "rokaf-sans-medium";
+  src: url('/fonts/ROKAF Sans Medium.ttf')
+}
+
+@font-face {
   font-family: "rokaf-sans-bold";
   src: url('/fonts/ROKAF Sans Bold.ttf')
+}
+
+@font-face {
+  font-family: "rokaf-slab-medium";
+  src: url('/fonts/ROKAF Slab Medium.ttf')
+}
+
+@font-face {
+  font-family: "rokaf-slab-bold";
+  src: url('/fonts/ROKAF Slab Bold.ttf')
 }
 
 :root {
