@@ -1,8 +1,10 @@
 export const Header = () => {
     return (
-        <div>
-        <p>rokaf.click</p>
-        <p>공군 부대 간 클릭 수로 경쟁합니다</p>
+        <div className='flex flex-col items-center'>
+        <p style={{fontSize: "50px",}}>
+            rokaf.click
+        </p>
+        <p>공군 부대 간 클릭 수로 경쟁합니다.</p>
         </div>
     )
 }
