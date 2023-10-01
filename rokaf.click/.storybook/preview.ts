@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import '../app/globals.css' // this connects the Storybook and tailwindcss
 
 const preview: Preview = {
   parameters: {

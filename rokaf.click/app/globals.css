@@ -22,6 +22,14 @@
   src: url('/fonts/ROKAF Slab Bold.ttf')
 }
 
+@layer base {
+  html {
+    font-family: "rokaf-sans-medium";
+  }
+}
+
+////////////////////////////////////////////////////////
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
