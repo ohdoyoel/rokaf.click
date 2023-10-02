@@ -7,7 +7,10 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-12">
       <Header/>
       {/* <Score/> */}
-      <CharacterButton/>
+      <CharacterButton
+      imageSource='/images/characters/01.png'
+      size={400}
+      />
     </main>
   )
 }

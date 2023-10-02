@@ -3,9 +3,9 @@ import { CharacterButton } from './index'
 
 export default { title: 'components/CharacterButton' } satisfies Meta<typeof CharacterButton>
 
-export const character03 = () => <CharacterButton imageSource='/images/characters/03.png' size={500} onClick={() => window.alert('clicked!')}/>
-export const character02 = () => <CharacterButton imageSource='/images/characters/02.png' size={500} onClick={() => window.alert('clicked!')}/>
 export const character01 = () => <CharacterButton imageSource='/images/characters/01.png' size={500} onClick={() => window.alert('clicked!')}/>
+export const character02 = () => <CharacterButton imageSource='/images/characters/02.png' size={500} onClick={() => window.alert('clicked!')}/>
+export const character03 = () => <CharacterButton imageSource='/images/characters/03.png' size={500} onClick={() => window.alert('clicked!')}/>
 export const character04 = () => <CharacterButton imageSource='/images/characters/04.png' size={500} onClick={() => window.alert('clicked!')}/>
 export const character05 = () => <CharacterButton imageSource='/images/characters/05.png' size={500} onClick={() => window.alert('clicked!')}/>
 export const character06 = () => <CharacterButton imageSource='/images/characters/06.png' size={500} onClick={() => window.alert('clicked!')}/>

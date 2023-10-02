@@ -19,7 +19,7 @@ const config: Config = {
         'sans-bold': 'rokaf-sans-bold',
         'slab-medium': 'rokaf-slab-medium',
         'slab-bold': 'rokaf-slab-bold',
-      }
+      },
     },
   },
   plugins: [],
