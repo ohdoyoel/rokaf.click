@@ -1,4 +1,4 @@
-import { CharacterImage } from "../atoms/CharacterImage";
+import { CharacterImage } from "../../atoms/CharacterImage";
 
 interface CharacterButtonProps {
     imageSource: string;
