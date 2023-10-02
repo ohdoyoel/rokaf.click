@@ -1,15 +1,15 @@
+import { CharacterImage } from "../atoms/CharacterImage";
+
 interface CharacterButtonProps {
-    imageSource?: string;
+    imageSource: string;
+    size?: number;
     onClick?: () => void;
 }
 
-export const CharacterButton = ({
-    imageSource = '/images/characters/01.png',
-    ...props
-}: CharacterButtonProps) => {
+export const CharacterButton = ({imageSource, size, onClick}: CharacterButtonProps) => {
     return (
-        <button>
-            <img src={imageSource} width={500} height={500}/>
+        <button onClick={onClick}>
+            <CharacterImage imageSource={imageSource} size={size}/>
         </button>
     )
 }
