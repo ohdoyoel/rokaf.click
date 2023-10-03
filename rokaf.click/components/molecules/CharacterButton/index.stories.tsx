@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react'
 import { CharacterButton } from './index'
 
-export default { title: 'components/CharacterButton' } satisfies Meta<typeof CharacterButton>
+export default { title: 'components/molecules/CharacterButton' } satisfies Meta<typeof CharacterButton>
 
 export const character01 = () => <CharacterButton imageSource='/images/characters/01.png' size={500} onClick={() => window.alert('clicked!')}/>
 export const character02 = () => <CharacterButton imageSource='/images/characters/02.png' size={500} onClick={() => window.alert('clicked!')}/>
