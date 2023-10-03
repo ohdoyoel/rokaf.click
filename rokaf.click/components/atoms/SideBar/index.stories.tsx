@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
-import { CollapsedBar } from './index'
+import { SideBar } from './index'
 
-export default { title: 'components/atoms/CollapsedBar' } satisfies Meta<typeof CollapsedBar>
+export default { title: 'components/atoms/CollapsedBar' } satisfies Meta<typeof SideBar>
 
-export const standard = () => <CollapsedBar/>
+export const standard = () => <SideBar/>
