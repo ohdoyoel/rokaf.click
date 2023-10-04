@@ -6,7 +6,7 @@ import { Score } from "@/components/atoms/Score";
 
 interface CharacterButtonWithScoreProps {
     imageSource: string;
-    size?: number;
+    size: number;
 }
 
 // score update code needed
@@ -20,7 +20,7 @@ export const CharacterButtonWithScore = ({imageSource, size}: CharacterButtonWit
     }
 
     return (
-        <div className='transition ease-in-out duration-150 hover:scale-110 active:scale-105'>
+        <div className='transition ease-in-out duration-150 hover:scale-110 active:scale-105 overflow-hidden'>
         <Score score={score}/>
         <CharacterButton imageSource={imageSource} size={size} onClick={characterButtonClick}/>
         </div>
