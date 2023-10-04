@@ -5,7 +5,7 @@ import { LocationBar } from '@/components/molecules/LocationBar'
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between h-screen pt-12 px-0 pb-0">
+    <main className="flex flex-col items-center justify-between w-screen h-screen pt-12 px-0 pb-0">
       <Header/>
       <LocationBar />
       <CharacterButtonWithScore
