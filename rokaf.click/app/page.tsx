@@ -1,6 +1,5 @@
 import { Header } from '@/components/atoms/Header'
 import { CharacterButtonWithScore } from '@/components/organisms/CharacterButtonWithScore'
-import { SideBar } from '@/components/atoms/SideBar'
 import { LocationBar } from '@/components/organisms/LocationBar'
 import { CharacterBar } from '@/components/organisms/CharacterBar'
 import { RankingBar } from '@/components/organisms/RankingBar'
