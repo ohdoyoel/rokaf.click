@@ -1,10 +1,10 @@
 import { SideBar } from "@/components/atoms/SideBar"
 
-export const LocationBar = () => {
+export const CharacterBar = () => {
     return (
-        <div className='absolute inset-y-20 left-0'>
+        <div className='absolute inset-y-52 right-0'>
             <SideBar>
-                {/* comboboxes */}
+                <div></div>
             </SideBar>
         </div>
     )
