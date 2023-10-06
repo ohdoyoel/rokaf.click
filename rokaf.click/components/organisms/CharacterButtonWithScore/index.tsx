@@ -21,8 +21,8 @@ export const CharacterButtonWithScore = ({id, size}: CharacterButtonWithScorePro
 
     return (
         <div className='transition ease-in-out duration-150 hover:scale-110 active:scale-105 overflow-hidden'>
-        <Score score={score}/>
-        <CharacterButton id={id} size={size} onClick={characterButtonClick}/>
+            <Score score={score}/>
+            <CharacterButton id={id} size={size} onClick={characterButtonClick}/>
         </div>
     )
 }
