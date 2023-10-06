@@ -1,11 +1,12 @@
 import Image from 'next/image'
 
 interface CharacterImageProps {
-    imageSource: string;
+    id: number;
     size?: number;
 }
 
-export const CharacterImage = ({imageSource, size}: CharacterImageProps) => {
+export const CharacterImage = ({id, size}: CharacterImageProps) => {
+    const imageSource = '/images/characters/' + ((id < 10) ? `0${id}` : `${id}`) + '.png' 
     return (
         <img // change this to Image when build next app
         src={imageSource}
