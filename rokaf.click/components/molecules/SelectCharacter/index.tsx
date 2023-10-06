@@ -13,7 +13,7 @@ export const SelectCharacter = ({} : SelectCharacterProps) => {
     }
 
     return (
-        <div className="flex flex-wrap justify-evenly">
+        <div className="flex flex-wrap justify-evenly items-center">
             {CharacterList()}
         </div>
     )
