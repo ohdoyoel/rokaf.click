@@ -7,7 +7,8 @@ interface SideBarProps {
 export const SideBar = ({children}: SideBarProps) => {
     return (
         <div className='w-full h-full p-3
-                        bg-slate-300 shadow'>
+                        bg-slate-300 shadow
+                        overflow-auto'>
             {children}
         </div>
     )

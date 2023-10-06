@@ -10,7 +10,7 @@ export default function Home() {
       <Header/>
       <LocationBar/>
       <CharacterButtonWithScore
-        imageSource='/images/characters/01.png'
+        id={1}
         size={400}
       />
       <CharacterBar/>

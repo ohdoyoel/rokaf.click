@@ -1,5 +1,5 @@
 interface LocationItemProps {
-    id: number; // receive all data looks better
+    id: number; // receive all data from parent looks better
 }
 
 export const LocationItem = ({id}:LocationItemProps) => {

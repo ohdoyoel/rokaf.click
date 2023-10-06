@@ -1,15 +1,15 @@
 import { CharacterImage } from "../../atoms/CharacterImage";
 
 interface CharacterButtonProps {
-    imageSource: string;
+    id: number;
     size?: number;
     onClick?: () => void;
 }
 
-export const CharacterButton = ({imageSource, size, onClick}: CharacterButtonProps) => {
+export const CharacterButton = ({id, size, onClick}: CharacterButtonProps) => {
     return (
         <button onClick={onClick}>
-            <CharacterImage imageSource={imageSource} size={size}/>
+            <CharacterImage id={id} size={size}/>
         </button>
     )
 }
