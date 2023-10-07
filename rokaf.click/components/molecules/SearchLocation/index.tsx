@@ -27,6 +27,7 @@ export const SearchLocation = ({}: SearchLocationProps) => {
 
     return (
         <div className="font-sans-medium">
+            <p>부대 바꾸기</p>
             <SearchInput onKeyUp={onSearchInputKeyUp}/>
             <ul id="locationList" className="h-full w-full p-1 shadow overflow-y-auto text-sm text-gray-700">
                 {/* repeatation by data from DB Server */}
