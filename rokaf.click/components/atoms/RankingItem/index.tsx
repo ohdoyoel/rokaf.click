@@ -6,7 +6,7 @@ interface RankingItemProps {
 
 export const RankingItem = ({id}:RankingItemProps) => {
     const rank = 1 // rank from id
-    const name = "3여단 188대대 5포대" // name from id
+    const name = "공군본부" // name from id
     const logoId = 1 // logo id from id
     const score = 500 // score from id
     return (
