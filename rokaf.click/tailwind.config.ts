@@ -16,9 +16,6 @@ const config: Config = {
       },
       fontFamily: {
         'sans-medium': 'rokaf-sans-medium',
-        'sans-bold': 'rokaf-sans-bold',
-        'slab-medium': 'rokaf-slab-medium',
-        'slab-bold': 'rokaf-slab-bold',
       },
     },
   },

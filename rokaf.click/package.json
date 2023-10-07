@@ -11,7 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "next": "latest",
+    "next": "^13.5.4",
     "react": "latest",
     "react-dom": "latest"
   },

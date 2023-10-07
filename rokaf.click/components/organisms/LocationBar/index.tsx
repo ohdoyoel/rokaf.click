@@ -12,9 +12,7 @@ export const LocationBar = () => {
                 </div>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
-                    <p className="font-slab-bold">
-                        부대 바꾸기
-                    </p>
+                    <p>부대 바꾸기</p>
                 </div>
             </SideBar>
         </div>

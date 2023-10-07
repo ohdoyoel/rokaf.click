@@ -7,21 +7,6 @@
   src: url('/fonts/ROKAF Sans Medium.ttf')
 }
 
-@font-face {
-  font-family: "rokaf-sans-bold";
-  src: url('/fonts/ROKAF Sans Bold.ttf')
-}
-
-@font-face {
-  font-family: "rokaf-slab-medium";
-  src: url('/fonts/ROKAF Slab Serif Medium.ttf')
-}
-
-@font-face {
-  font-family: "rokaf-slab-bold";
-  src: url('/fonts/ROKAF Slab Serif Bold.ttf')
-}
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -36,5 +21,5 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-    /* font-family: "rokaf-sans-medium"; */
+    font-family: "rokaf-sans-medium";
 }
