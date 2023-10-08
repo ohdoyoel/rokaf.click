@@ -14,7 +14,7 @@ export const RankingItem = ({id}:RankingItemProps) => {
                             flex items-center w-9/12 h-10 pl-2 rounded hover:bg-gray-100
                             transition-all ease-in-out duration-150 hover:scale-105">
                 <p className="px-5">{rank}</p>
-                <LogoImage logoId={logoId} size={30}/>
+                <LogoImage logoSrc={id.toString()} size={30}/>
                 <p className="px-5">{name}</p>
                 <p className="px-5 absolute right-0">{score}</p>
             </div>

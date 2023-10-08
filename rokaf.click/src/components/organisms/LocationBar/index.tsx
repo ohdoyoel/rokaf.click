@@ -3,13 +3,21 @@ import { SearchLocation } from "@/src/components/molecules/SearchLocation"
 import { getAllLocations } from "@/src/services/get-all-locations"
 import { Api } from "@/src/types/data"
 import { Location } from "@/src/types/data"
+import { useEffect, useState } from "react"
 
 const context: Api = {
-    apiRootUrl: "https://3001-ohdoyoel-rokafclickback-4nlx9a00kq8.ws-us105.gitpod.io/"
+    apiRootUrl: "https://3001-ohdoyoel-rokafclickback-4nlx9a00kq8.ws-us105.gitpod.io"
 }
 
-export const LocationBar = async () => {
-    const locations: Location[] = await getAllLocations(context)
+export const LocationBar = () => {
+    const [locations, setLocations] = useState<Location[]>([])
+    
+    useEffect(() => {
+    fetch(context.apiRootUrl + "/locations")
+      .then((res) => res.json())
+      .then((data) => setLocations(data));
+    }, []);
+
     console.log(locations)
 
     return (
