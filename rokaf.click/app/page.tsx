@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { Header } from '@/components/atoms/Header'
-import { CharacterButtonWithScore } from '@/components/organisms/CharacterButtonWithScore'
-import { LocationBar } from '@/components/organisms/LocationBar'
-import { CharacterBar } from '@/components/organisms/CharacterBar'
-import { RankingBar } from '@/components/organisms/RankingBar'
+import { Header } from '@/src/components/atoms/Header'
+import { CharacterButtonWithScore } from '@/src/components/organisms/CharacterButtonWithScore'
+import { LocationBar } from '@/src/components/organisms/LocationBar'
+import { CharacterBar } from '@/src/components/organisms/CharacterBar'
+import { RankingBar } from '@/src/components/organisms/RankingBar'
 
 export default function Home() {
   const [imageId, setImageId] = useState<number>(1)

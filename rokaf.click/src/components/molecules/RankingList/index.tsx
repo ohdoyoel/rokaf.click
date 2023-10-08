@@ -1,4 +1,4 @@
-import { RankingItem } from "@/components/atoms/RankingItem"
+import { RankingItem } from "@/src/components/atoms/RankingItem"
 
 export const RankingList = () => {
     return (

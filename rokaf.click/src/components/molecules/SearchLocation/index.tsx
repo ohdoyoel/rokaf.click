@@ -1,7 +1,7 @@
 "use client"
 
-import { SearchInput } from "@/components/atoms/SearchInput"
-import { LocationItem } from "@/components/atoms/LocationItem"
+import { SearchInput } from "@/src/components/atoms/SearchInput"
+import { LocationItem } from "@/src/components/atoms/LocationItem"
 
 interface SearchLocationProps {
     // GET id, name, score from DB Server

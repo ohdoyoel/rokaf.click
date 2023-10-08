@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { CharacterItem } from "@/components/molecules/CharacterItem";
+import { CharacterItem } from "@/src/components/molecules/CharacterItem";
 
 interface SelectImageProps {
     setImageId: Dispatch<SetStateAction<number>>

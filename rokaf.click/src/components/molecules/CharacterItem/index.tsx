@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { CharacterButton } from "@/components/molecules/CharacterButton";
+import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import characterNames from "@/public/docs/character-names.json"
 
 interface CharacterItemProps {

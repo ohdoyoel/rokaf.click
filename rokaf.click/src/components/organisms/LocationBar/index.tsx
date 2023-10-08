@@ -1,5 +1,5 @@
-import { SideBar } from "@/components/atoms/SideBar"
-import { SearchLocation } from "@/components/molecules/SearchLocation"
+import { SideBar } from "@/src/components/atoms/SideBar"
+import { SearchLocation } from "@/src/components/molecules/SearchLocation"
 
 export const LocationBar = () => {
     return (

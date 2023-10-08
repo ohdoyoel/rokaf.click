@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { CharacterButton } from "@/components/molecules/CharacterButton";
-import { Score } from "@/components/atoms/Score";
+import { CharacterButton } from "@/src/components/molecules/CharacterButton";
+import { Score } from "@/src/components/atoms/Score";
 
 interface CharacterButtonWithScoreProps {
     id: number;

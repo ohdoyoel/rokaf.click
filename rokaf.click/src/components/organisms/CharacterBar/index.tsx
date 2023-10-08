@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
-import { SideBar } from "@/components/atoms/SideBar"
-import { SelectCharacter } from "@/components/molecules/SelectCharacter"
+import { SideBar } from "@/src/components/atoms/SideBar"
+import { SelectCharacter } from "@/src/components/molecules/SelectCharacter"
 
 interface CharacterBarProps {
     setImageId: Dispatch<SetStateAction<number>>

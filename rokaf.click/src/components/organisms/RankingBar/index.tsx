@@ -1,5 +1,5 @@
-import { BottomBar } from "@/components/atoms/BottomBar"
-import { RankingList } from "@/components/molecules/RankingList"
+import { BottomBar } from "@/src/components/atoms/BottomBar"
+import { RankingList } from "@/src/components/molecules/RankingList"
 
 export const RankingBar = () => {
     return (
