@@ -1,14 +1,14 @@
 import Image from 'next/image'
 
 interface LogoImageProps {
-    logoId: number;
+    logoSrc: string;
     size: number;
 }
 
-export const LogoImage = ({logoId, size}: LogoImageProps) => {
+export const LogoImage = ({logoSrc, size}: LogoImageProps) => {
     // const imageSource = '/images/logos/' + ((logoId < 10) ? `0${logoId}` : `${logoId}`) + '.png' 
-    const imageSource = '/images/logos/01_공군본부.svg'
-    // const imageSource = '/images/logos/10_공군검찰단.webp' 
+    const imageSource = `/images/logos/${logoSrc}`
+
     return (
         <img // change this to Image when build next app
         src={imageSource}

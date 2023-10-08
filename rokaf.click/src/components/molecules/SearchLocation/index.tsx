@@ -30,7 +30,7 @@ export const SearchLocation = ({locations}: SearchLocationProps) => {
         const result = []
         for (const location of locations) {
             result.push(<LocationItem key={location.id}
-                        id={location.id} logoId={location.logoId} name={location.name}/>)
+                        id={location.id} logoSrc={location.logoSrc} name={location.name}/>)
         }
         return result
     }

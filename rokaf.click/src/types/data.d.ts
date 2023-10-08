@@ -1,6 +1,6 @@
 export type Location = {
     id: number
-    logoId: number
+    logoSrc: string
     name: string
     score: number
 }
