@@ -9,7 +9,7 @@ export const SelectCharacter = ({setImageId}:SelectImageProps) => {
     const CharacterList = () => {
         const result = []
         for (let i = 1; i < 55; i++) {
-            result.push(<CharacterItem setImageId={setImageId} id={i} size={100}/>)
+            result.push(<CharacterItem key={i} setImageId={setImageId} id={i} size={100}/>)
         }
         return result
     }
