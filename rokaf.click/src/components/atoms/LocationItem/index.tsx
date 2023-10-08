@@ -1,13 +1,12 @@
 import { LogoImage } from "../LogoImage";
 
 interface LocationItemProps {
-    id: number; // receive all data from parent looks better
+    id: number // receive all data from parent looks better
+    logoId: number
+    name: string
 }
 
-export const LocationItem = ({id}:LocationItemProps) => {
-    const name = "공군본부" // name from id
-    const logoId = 1 // logo id from id
-
+export const LocationItem = ({id, logoId, name}:LocationItemProps) => {
     return (
         <li>
             <div className="flex gap w-9/12 items-center pl-2 rounded hover:bg-gray-100

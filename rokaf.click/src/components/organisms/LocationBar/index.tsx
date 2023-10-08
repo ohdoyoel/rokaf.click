@@ -5,7 +5,7 @@ import { Api } from "@/src/types/data"
 import { Location } from "@/src/types/data"
 
 const context: Api = {
-    apiRootUrl: "http://localhost:3001"
+    apiRootUrl: "https://3001-ohdoyoel-rokafclickback-4nlx9a00kq8.ws-us105.gitpod.io/"
 }
 
 export const LocationBar = async () => {
@@ -18,7 +18,7 @@ export const LocationBar = async () => {
                         group'>
             <SideBar>
                 <div className="hidden group-hover:block">
-                    <SearchLocation/>
+                    <SearchLocation locations={locations}/>
                 </div>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
