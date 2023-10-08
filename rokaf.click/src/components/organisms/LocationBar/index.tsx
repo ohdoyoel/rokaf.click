@@ -1,6 +1,5 @@
 import { SideBar } from "@/src/components/atoms/SideBar"
 import { SearchLocation } from "@/src/components/molecules/SearchLocation"
-import { getAllLocations } from "@/src/services/get-all-locations"
 import { Api } from "@/src/types/data"
 import { Location } from "@/src/types/data"
 import { useEffect, useState } from "react"
@@ -13,12 +12,12 @@ export const LocationBar = () => {
     const [locations, setLocations] = useState<Location[]>([])
     
     useEffect(() => {
-    fetch(context.apiRootUrl + "/locations")
-      .then((res) => res.json())
-      .then((data) => setLocations(data));
-    }, []);
+        fetch(context.apiRootUrl + "/locations")
+            .then((res) => res.json())
+            .then((data) => setLocations(data));
+    }, [])
 
-    console.log(locations)
+    // console.log(locations)
 
     return (
         <div className='absolute inset-y-52 left-0 rounded-r-lg
