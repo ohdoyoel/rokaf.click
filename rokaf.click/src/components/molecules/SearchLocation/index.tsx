@@ -3,12 +3,14 @@
 import { SearchInput } from "@/src/components/atoms/SearchInput"
 import { LocationItem } from "../../atoms/LocationItem"
 import { Location } from "@/src/types/data"
+import { Dispatch, SetStateAction } from "react"
 
 interface SearchLocationProps {
     locations: Location[]
+    setLocationId: Dispatch<SetStateAction<number>>
 }
 
-export const SearchLocation = ({locations}: SearchLocationProps) => {
+export const SearchLocation = ({locations, setLocationId}: SearchLocationProps) => {
     // filter function
     const onSearchInputKeyUp = () => { 
         let input, inputVal, ul, li;
@@ -30,7 +32,8 @@ export const SearchLocation = ({locations}: SearchLocationProps) => {
         const result = []
         for (const location of locations) {
             result.push(<LocationItem key={location.id}
-                        id={location.id} logoSrc={location.logoSrc} name={location.name}/>)
+                        id={location.id} logoSrc={location.logoSrc} name={location.name}
+                        setLocationId={setLocationId}/>)
         }
         return result
     }

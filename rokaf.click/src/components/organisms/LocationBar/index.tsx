@@ -2,17 +2,25 @@ import { SideBar } from "@/src/components/atoms/SideBar"
 import { SearchLocation } from "@/src/components/molecules/SearchLocation"
 import { Api } from "@/src/types/data"
 import { Location } from "@/src/types/data"
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 const context: Api = {
     apiRootUrl: "https://3001-ohdoyoel-rokafclickback-4nlx9a00kq8.ws-us105.gitpod.io"
 }
 
-export const LocationBar = () => {
+interface LocationBarProps {
+    setLocationId: Dispatch<SetStateAction<number>>
+}
+
+export const LocationBar = ({setLocationId}: LocationBarProps) => {
     const [locations, setLocations] = useState<Location[]>([])
     
     useEffect(() => {
-        fetch(context.apiRootUrl + "/locations")
+        fetch(context.apiRootUrl + "/locations",
+                {
+                    method:'GET',
+                    headers: {'Content-Type':'application/json'},
+                })
             .then((res) => res.json())
             .then((data) => setLocations(data));
     }, [])
@@ -25,7 +33,7 @@ export const LocationBar = () => {
                         group'>
             <SideBar>
                 <div className="hidden group-hover:block">
-                    <SearchLocation locations={locations}/>
+                    <SearchLocation setLocationId={setLocationId} locations={locations}/>
                 </div>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
