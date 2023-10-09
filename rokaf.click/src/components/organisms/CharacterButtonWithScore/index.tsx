@@ -20,18 +20,6 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
     const [score, setScore] = useState(0)
     const [locationScore, setLocationScore] = useState(-1000)
 
-    // const fetchLocationScore = async () => {
-    //     try {
-    //         const response = await axios.get(
-    //             context.apiRootUrl + `/locations/${locationId}`,
-    //         );
-    //         setLocationScore(response.data.score);
-            
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // };
-
     const getLocationScore = async () => {
         try {
             const response = await axios.get(
@@ -51,18 +39,18 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
         } else {
             setScore(score + 1)
 
-            setLocationScore(await getLocationScore())
-            console.log(`locationScore: ${locationScore}`)
-
             // location's score + 1 on json server
+            setLocationScore(await getLocationScore())
             try {
                 axios.patch(
                     context.apiRootUrl + `/locations/${locationId}`,
                     {"score": locationScore + 1}
                 );
-            } catch (e) {
-                console.log(e)
-            }  
+                } catch (e) {
+                    console.log(e)
+                }
+            setLocationScore(await getLocationScore())
+            console.log(`locationScore: ${locationScore}`)
         };
     }
 
