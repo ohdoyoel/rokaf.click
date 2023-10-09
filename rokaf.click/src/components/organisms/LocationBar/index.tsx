@@ -43,8 +43,8 @@ export const LocationBar = ({setLocationId}: LocationBarProps) => {
             <SideBar>
                 <div className="hidden group-hover:block">
                     <SearchLocation setLocationId={setLocationId} locations={locations}/>
-                    {loading ? <div>로딩중..</div> : null}
-                    {error ? <div>에러가 발생했습니다</div> : null}
+                    {loading && <div>로딩중..</div>}
+                    {error && <div>에러가 발생했습니다</div>}
                 </div>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">

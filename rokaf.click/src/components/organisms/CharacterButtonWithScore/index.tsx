@@ -1,9 +1,10 @@
-// 'use client'
+'use client'
 
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import { Score } from "@/src/components/atoms/Score";
 import { Api } from '@/src/types/data';
+import axios from 'axios';
 
 interface CharacterButtonWithScoreProps {
     id: number;
@@ -17,24 +18,52 @@ const context: Api = {
 
 export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
-    const characterButtonClick = () => {
-        // location's score + 1 on json server
+    const [locationScore, setLocationScore] = useState(-1000)
+
+    // const fetchLocationScore = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             context.apiRootUrl + `/locations/${locationId}`,
+    //         );
+    //         setLocationScore(response.data.score);
+            
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // };
+
+    const getLocationScore = async () => {
+        try {
+            const response = await axios.get(
+                context.apiRootUrl + `/locations/${locationId}`,
+            );
+            return response.data.score;
+        } catch (e) {
+            console.log(e)
+        }
+
+        return null
+    }
+
+    const characterButtonClick = async () => {
         if (locationId == 0) {
             window.alert("부대를 선택해주세요!")
         } else {
             setScore(score + 1)
-            useEffect(() => {
-                fetch(context.apiRootUrl + `/locations/${locationId}`,
-                        {
-                            method:'PATCH',
-                            headers: {'Content-Type':'application/json'},
-                            body: JSON.stringify({"score":score+1})
-                        })
-                    .then((res) => res.json())
-            }, [score])
 
-            // location's score + 1 on ranking bar
-        }
+            setLocationScore(await getLocationScore())
+            console.log(`locationScore: ${locationScore}`)
+
+            // location's score + 1 on json server
+            try {
+                axios.patch(
+                    context.apiRootUrl + `/locations/${locationId}`,
+                    {"score": locationScore + 1}
+                );
+            } catch (e) {
+                console.log(e)
+            }  
+        };
     }
 
     return (
