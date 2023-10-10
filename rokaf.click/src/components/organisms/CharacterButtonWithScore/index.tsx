@@ -42,7 +42,7 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
     const patchLocationScore = async () => {
         try {
             axios.patch(
-                process.env.NEXT_PUBLIC_API_BASE_PATH + `/locations/${locationId}`,
+                process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
                 {"score": locationScore + score}
             )
         } catch (e) {
@@ -79,6 +79,8 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
             //     }
             // setLocationScore(await getLocationScore())
             // console.log(`locationScore: ${locationScore}`)
+
+            // patchLocationScore()
         }
     }
 

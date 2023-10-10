@@ -1,7 +1,11 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { Header } from '@/src/components/atoms/Header'
+// const CharacterButtonWithScoreWithNoSSR = dynamic<React.ComponentProps<typeof CharacterButtonWithScore>>(() => import('@/src/components/organisms/CharacterButtonWithScore'),{
+//   ssr: false,
+// })
 import { CharacterButtonWithScore } from '@/src/components/organisms/CharacterButtonWithScore'
 import { LocationBar } from '@/src/components/organisms/LocationBar'
 import { CharacterBar } from '@/src/components/organisms/CharacterBar'
@@ -11,8 +15,6 @@ export default function Home() {
   const [imageId, setImageId] = useState<number>(1)
   const [locationId, setLocationId] = useState<number>(0)
   console.log(`locationId: ${locationId}`)
-  
-  // console.log(`locationScore: ${locationScore}`)
 
   return (
     <main id="root" className="flex flex-col items-center justify-between w-screen h-screen pt-12 pb-24">
