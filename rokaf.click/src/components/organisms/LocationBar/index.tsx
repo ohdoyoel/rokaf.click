@@ -5,10 +5,6 @@ import { Location } from "@/src/types/data"
 import axios from "axios"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
-const context: Api = {
-    apiRootUrl: "https://3001-ohdoyoel-rokafclickback-4nlx9a00kq8.ws-us105.gitpod.io"
-}
-
 interface LocationBarProps {
     setLocationId: Dispatch<SetStateAction<number>>
 }
@@ -24,7 +20,7 @@ export const LocationBar = ({setLocationId}: LocationBarProps) => {
                 setError(false);
                 setLoading(true);
                 const response = await axios.get(
-                    context.apiRootUrl + "/locations",
+                    process.env.NEXT_PUBLIC_API_BASE_PATH + "/locations",
                 );
                 setLocations(response.data);
             } catch (e) {
