@@ -1,6 +1,5 @@
 import { SideBar } from "@/src/components/atoms/SideBar"
 import { SearchLocation } from "@/src/components/molecules/SearchLocation"
-import { Api } from "@/src/types/data"
 import { Location } from "@/src/types/data"
 import axios from "axios"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
@@ -20,7 +19,7 @@ export const LocationBar = ({setLocationId}: LocationBarProps) => {
                 setError(false);
                 setLoading(true);
                 const response = await axios.get(
-                    process.env.NEXT_PUBLIC_API_BASE_PATH + "/locations",
+                    process.env.NEXT_PUBLIC_API_BASE_PATH + "locations",
                 );
                 setLocations(response.data);
             } catch (e) {
