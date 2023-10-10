@@ -39,11 +39,11 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
     // patch locationScore to prevLocationScore + score
     // when 1 reloaded 2 closed
 
-    const patchLocationScore = async () => {
+    const patchLocationScore = async (sum: number) => {
         try {
             axios.patch(
                 process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
-                {"score": locationScore + score}
+                {"score": sum}
             )
         } catch (e) {
             console.log(e)
@@ -51,7 +51,8 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
     }
 
     window.addEventListener("beforeunload", (event) => {
-        locationId != 0 && patchLocationScore();
+        console.log(`locationScore: ${locationScore}, score: ${score}`)
+        locationId != 0 && patchLocationScore(locationScore + score);
         console.log("API call before page reload");
     });
  
@@ -64,7 +65,7 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
         if (locationId == 0) {
             window.alert("부대를 선택해주세요!")
         } else {
-            console.log(`id changed, locationScore: ${locationScore}`)
+            console.log(`locationScore: ${locationScore}, score: ${score}`)
             setScore(score + 1)
 
             // location's score + 1 on json server
