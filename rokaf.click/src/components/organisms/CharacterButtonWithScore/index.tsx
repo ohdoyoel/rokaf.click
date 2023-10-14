@@ -11,8 +11,6 @@ interface CharacterButtonWithScoreProps {
     size: number;
 }
 
-
-
 export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
     const [locationScore, setLocationScore] = useState(-1000)
