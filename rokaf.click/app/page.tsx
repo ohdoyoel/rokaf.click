@@ -23,7 +23,7 @@ export default function Home() {
       <CharacterButtonWithScore
         id={imageId}
         locationId={locationId}
-        size={400}
+        size={150}
       />
       <CharacterBar setImageId={setImageId}/>
       <RankingBar/>
