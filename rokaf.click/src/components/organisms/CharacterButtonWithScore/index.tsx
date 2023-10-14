@@ -11,33 +11,30 @@ interface CharacterButtonWithScoreProps {
     size: number;
 }
 
+
+
 export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
     const [locationScore, setLocationScore] = useState(-1000)
 
+    useEffect(() => {
+        locationId != 0 && getLocationScore()
+        setScore(0)
+    }, [locationId])
+
     const getLocationScore = async () => {
         let score: number = -999
-        // console.log(locationScore, score)
         try {
             const response = await axios.get(
                 process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
             )
             score = response.data.score
-        // console.log(locationScore, score)
         } catch (e) {
             console.log(e)
         } finally {
             setLocationScore(score)
         }
-        // console.log(locationScore, score)
     }
-    
-    useEffect(() => {
-        locationId != 0 && getLocationScore()
-    }, [locationId])
-
-    // patch locationScore to prevLocationScore + score
-    // when 1 reloaded 2 closed
 
     const patchLocationScore = async (sum: number) => {
         try {
@@ -50,16 +47,9 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
         }
     }
 
-    window.addEventListener("beforeunload", (event) => {
-        console.log(`locationScore: ${locationScore}, score: ${score}`)
-        locationId != 0 && patchLocationScore(locationScore + score);
-        console.log("API call before page reload");
-    });
- 
-    // window.addEventListener("unload", (event) => {
-    //     patchLocationScore();
-    //     console.log("API call after page reload");
-    // });
+    const patchTimer = setTimeout(() => {
+        locationId != 0 && patchLocationScore(locationScore + score)
+    }, 1000);
     
     const characterButtonClick = async () => {
         if (locationId == 0) {
@@ -67,21 +57,6 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
         } else {
             console.log(`locationScore: ${locationScore}, score: ${score}`)
             setScore(score + 1)
-
-            // location's score + 1 on json server
-            // setLocationScore(await getLocationScore())
-            // try {
-            //     axios.patch(
-            //         context.apiRootUrl + `/locations/${locationId}`,
-            //         {"score": locationScore + 1}
-            //     );
-            //     } catch (e) {
-            //         console.log(e)
-            //     }
-            // setLocationScore(await getLocationScore())
-            // console.log(`locationScore: ${locationScore}`)
-
-            // patchLocationScore()
         }
     }
 
