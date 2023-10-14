@@ -9,7 +9,7 @@ export const CharacterImage = ({id, size}: CharacterImageProps) => {
     const imageSource = '/images/characters/' + ((id < 10) ? `0${id}` : `${id}`) + '.png' 
     return (
         <img // change this to Image when build next app
-        className="max-h-full w-auto"
+        className="max-h-1/3 w-auto"
         src={imageSource}
         alt={imageSource}
         />
