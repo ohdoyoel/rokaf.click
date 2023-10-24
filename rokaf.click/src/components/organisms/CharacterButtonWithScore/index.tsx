@@ -13,9 +13,9 @@ interface CharacterButtonWithScoreProps {
 
 export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
-    const scoreRef = useRef()
+    const scoreRef = useRef(0)
     const [locationScore, setLocationScore] = useState(-1000)
-    const locationScoreRef = useRef()
+    const locationScoreRef = useRef(-1000)
     
     useEffect(() => {
         locationId != 0 && getLocationScore()
@@ -46,11 +46,6 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
             console.log(e)
         }
     }
-    
-    // patch using timer
-    // const patchTimer = setTimeout(() => {
-    //     locationId != 0 && patchLocationScore(locationScore + score)
-    // }, 1000);
     
     // patch onbeforeunload
     scoreRef.current = score
