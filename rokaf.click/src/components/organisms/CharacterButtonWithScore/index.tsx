@@ -1,6 +1,6 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState, useRef } from 'react'
 import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import { Score } from "@/src/components/atoms/Score";
 import axios from 'axios';
@@ -13,41 +13,49 @@ interface CharacterButtonWithScoreProps {
 
 export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
+    const scoreRef = useRef(0)
     const [locationScore, setLocationScore] = useState(-1000)
-
+    const locationScoreRef = useRef(-1000)
+    
     useEffect(() => {
         locationId != 0 && getLocationScore()
         setScore(0)
     }, [locationId])
-
+    
     const getLocationScore = async () => {
         let score: number = -999
         try {
             const response = await axios.get(
                 process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
-            )
-            score = response.data.score
-        } catch (e) {
-            console.log(e)
-        } finally {
-            setLocationScore(score)
-        }
+                )
+                score = response.data.score
+            } catch (e) {
+                console.log(e)
+            } finally {
+                setLocationScore(score)
+            }
     }
-
+    
     const patchLocationScore = async (sum: number) => {
         try {
             axios.patch(
                 process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
                 {"score": sum}
-            )
-        } catch (e) {
+                )
+            } catch (e) {
             console.log(e)
         }
     }
-
-    const patchTimer = setTimeout(() => {
-        locationId != 0 && patchLocationScore(locationScore + score)
-    }, 1000);
+    
+    // patch onbeforeunload
+    scoreRef.current = score
+    locationScoreRef.current = locationScore
+    if (typeof window !== "undefined") {
+        window.addEventListener("beforeunload", (event) => {
+            console.log(`locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
+            locationId != 0 && patchLocationScore(locationScoreRef.current + scoreRef.current);
+        });
+    }
     
     const characterButtonClick = async () => {
         if (locationId == 0) {
