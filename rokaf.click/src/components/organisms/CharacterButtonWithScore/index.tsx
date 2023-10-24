@@ -50,10 +50,12 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
     // patch onbeforeunload
     scoreRef.current = score
     locationScoreRef.current = locationScore
-    window.addEventListener("beforeunload", (event) => {
-        console.log(`locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
-        locationId != 0 && patchLocationScore(locationScoreRef.current + scoreRef.current);
-    });
+    if (typeof window !== "undefined") {
+        window.addEventListener("beforeunload", (event) => {
+            console.log(`locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
+            locationId != 0 && patchLocationScore(locationScoreRef.current + scoreRef.current);
+        });
+    }
     
     const characterButtonClick = async () => {
         if (locationId == 0) {
