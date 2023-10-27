@@ -4,7 +4,7 @@ import { RankingList } from "@/src/components/molecules/RankingList"
 export const RankingBar = () => {
     return (
         <div className='absolute inset-x-1/4 bottom-0
-                        h-20 transition-all ease-in-out duration-150 hover:h-[46rem]
+                        h-20 transition-all ease-in-out duration-150 hover:h-4/5
                         group'>
             <BottomBar>
                 <div className="hidden group-hover:block">

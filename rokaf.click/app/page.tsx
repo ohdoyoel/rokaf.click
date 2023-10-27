@@ -1,19 +1,15 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Header } from '@/src/components/atoms/Header'
-// const CharacterButtonWithScoreWithNoSSR = dynamic<React.ComponentProps<typeof CharacterButtonWithScore>>(() => import('@/src/components/organisms/CharacterButtonWithScore'),{
-//   ssr: false,
-// })
 import { CharacterButtonWithScore } from '@/src/components/organisms/CharacterButtonWithScore'
 import { LocationBar } from '@/src/components/organisms/LocationBar'
 import { CharacterBar } from '@/src/components/organisms/CharacterBar'
 import { RankingBar } from '@/src/components/organisms/RankingBar'
 
 export default function Home() {
-  const [imageId, setImageId] = useState<number>(1)
-  const [locationId, setLocationId] = useState<number>(0)
+  const [imageId, setImageId] = useState(1)
+  const [locationId, setLocationId] = useState(0)
   console.log(`locationId: ${locationId}`)
 
   return (
@@ -23,7 +19,6 @@ export default function Home() {
       <CharacterButtonWithScore
         id={imageId}
         locationId={locationId}
-        size={150}
       />
       <CharacterBar setImageId={setImageId}/>
       <RankingBar/>

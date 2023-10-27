@@ -8,20 +8,34 @@ import axios from 'axios';
 interface CharacterButtonWithScoreProps {
     id: number;
     locationId : number
-    size: number;
+    size?: number;
 }
 
-export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButtonWithScoreProps) => {
+export const CharacterButtonWithScore = ({id, locationId}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
     const scoreRef = useRef(0)
     const [locationScore, setLocationScore] = useState(-1000)
     const locationScoreRef = useRef(-1000)
+    const [size, setSize] = useState(0)
+    
+    // responsive image size
+    const resizeImage = () => {
+        setSize(window.innerHeight / 4)
+    }
     
     useEffect(() => {
-        locationId != 0 && getLocationScore()
-        setScore(0)
-    }, [locationId])
+        if (typeof window !== "undefined") {
+            resizeImage()
+        }
+    }, [])
     
+    if (typeof window !== "undefined") {
+        window.addEventListener("resize", (event) => {
+            resizeImage()
+        });
+    }
+
+    // get location score
     const getLocationScore = async () => {
         let score: number = -999
         try {
@@ -34,13 +48,20 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
             } finally {
                 setLocationScore(score)
             }
-    }
-    
-    const patchLocationScore = async (sum: number) => {
+        }
+        
+    // as location id change, call getLocationScore
+    useEffect(() => {
+        locationId != 0 && getLocationScore()
+        setScore(0)
+    }, [locationId])
+
+    // patch location score
+    const patchLocationScore = async () => {
         try {
             axios.patch(
                 process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
-                {"score": sum}
+                {"score": locationScoreRef.current + scoreRef.current}
                 )
             } catch (e) {
             console.log(e)
@@ -53,7 +74,7 @@ export const CharacterButtonWithScore = ({id, locationId, size}: CharacterButton
     if (typeof window !== "undefined") {
         window.addEventListener("beforeunload", (event) => {
             console.log(`locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
-            locationId != 0 && patchLocationScore(locationScoreRef.current + scoreRef.current);
+            locationId != 0 && patchLocationScore();
         });
     }
     
