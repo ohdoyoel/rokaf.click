@@ -1,14 +1,14 @@
 import { LogoImage } from "../LogoImage";
 
 interface RankingItemProps {
+    rank: number
     id: number
     name: string
     score: number
     logoSrc: string
 }
 
-export const RankingItem = ({id, name, score, logoSrc}:RankingItemProps) => {
-    const rank = 1 // rank from id
+export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
     return (
             <div className="relative
                             flex items-center w-9/12 h-10 pl-2 rounded hover:bg-gray-100

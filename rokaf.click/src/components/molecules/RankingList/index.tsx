@@ -9,11 +9,13 @@ interface RankingListProps {
 export const RankingList = ({locationId, sortedLocations}: RankingListProps ) => {
 
     const listAllSortedLocations = () => {
+        let rank = 1
         const result = []
         for (const location of sortedLocations) {
-            result.push(<RankingItem id={location.id} logoSrc={location.logoSrc}
-                                        name={location.name} score={location.score}
+            result.push(<RankingItem rank={rank} id={location.id} logoSrc={location.logoSrc}
+                                    name={location.name} score={location.score}
                         />)
+            rank++
         }
         return result
     }
