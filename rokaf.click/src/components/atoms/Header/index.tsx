@@ -5,7 +5,7 @@ export const Header = () => {
         <p className='font-black text-7xl'>
             rokaf.click
         </p>
-        <p className='font-medium text-base pt-3'>공군 부대 간 클릭 수로 경쟁합니다.</p>
+        <p className='line-clamp-1 font-medium text-base'>공군 부대 간 클릭 수로 경쟁합니다.</p>
         </div>
     )
 }

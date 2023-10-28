@@ -31,7 +31,7 @@ export const LocationBar = ({setLocationId}: LocationBarProps) => {
     }, []);
 
     return (
-        <div className='absolute inset-y-52 left-0 rounded-r-lg
+        <div className='absolute h-1/2 left-0 rounded-r-lg
                         w-20 transition-all ease-in-out duration-150 hover:w-1/4
                         group'>
             <SideBar>
@@ -42,7 +42,11 @@ export const LocationBar = ({setLocationId}: LocationBarProps) => {
                 </div>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
-                    <p>부대 바꾸기</p>
+                    <p className="text-3xl text-center pb-3">🏕️</p>
+                    <p className="font-medium text-3xl text-center">부</p>
+                    <p className="font-medium text-3xl text-center pb-3">대</p>
+                    <p className="font-medium text-3xl text-center">선</p>
+                    <p className="font-medium text-3xl text-center">택</p>
                 </div>
             </SideBar>
         </div>

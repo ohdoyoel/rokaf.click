@@ -8,7 +8,7 @@ interface CharacterBarProps {
 
 export const CharacterBar = ({setImageId}: CharacterBarProps) => {
     return (
-        <div className='absolute inset-y-52 right-0 rounded-l-lg
+        <div className='absolute h-1/2 right-0 rounded-l-lg
                         w-20 transition-all ease-in-out duration-150 hover:w-1/4
                         group'>
             <SideBar>
@@ -17,7 +17,12 @@ export const CharacterBar = ({setImageId}: CharacterBarProps) => {
                 </div>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
-                    <p>캐릭터 바꾸기</p>
+                    <p className="text-3xl text-center pb-3">👚</p>
+                    <p className="font-medium text-3xl text-center">캐</p>
+                    <p className="font-medium text-3xl text-center">릭</p>
+                    <p className="font-medium text-3xl text-center pb-3">터</p>
+                    <p className="font-medium text-3xl text-center">선</p>
+                    <p className="font-medium text-3xl text-center">택</p>
                 </div>
             </SideBar>
         </div>
