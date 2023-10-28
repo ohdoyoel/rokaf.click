@@ -1,15 +1,14 @@
 import { LogoImage } from "../LogoImage";
 
 interface RankingItemProps {
-    id: number; // receive all data from parent looks better
+    id: number
+    name: string
+    score: number
+    logoSrc: string
 }
 
-export const RankingItem = ({id}:RankingItemProps) => {
+export const RankingItem = ({id, name, score, logoSrc}:RankingItemProps) => {
     const rank = 1 // rank from id
-    const name = "공군본부" // name from id
-    const logoId = 1 // logo id from id
-    const score = 500 // score from id
-    const logoSrc = "01_공군본부.svg"
     return (
             <div className="relative
                             flex items-center w-9/12 h-10 pl-2 rounded hover:bg-gray-100

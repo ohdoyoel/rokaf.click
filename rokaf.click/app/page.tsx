@@ -21,7 +21,7 @@ export default function Home() {
         locationId={locationId}
       />
       <CharacterBar setImageId={setImageId}/>
-      <RankingBar/>
+      <RankingBar locationId={locationId}/>
       <div/>
     </main>
   )

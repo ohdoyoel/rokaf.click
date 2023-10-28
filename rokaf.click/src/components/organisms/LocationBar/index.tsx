@@ -27,7 +27,6 @@ export const LocationBar = ({setLocationId}: LocationBarProps) => {
             }
             setLoading(false)
         };
-
         fetchLocations();
     }, []);
 

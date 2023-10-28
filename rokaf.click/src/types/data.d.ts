@@ -4,7 +4,3 @@ export type Location = {
     name: string
     score: number
 }
-
-export type Api = {
-    apiRootUrl: string
-}
