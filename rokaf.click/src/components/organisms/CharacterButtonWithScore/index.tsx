@@ -20,14 +20,15 @@ export const CharacterButtonWithScore = ({id, locationId}: CharacterButtonWithSc
     
     // responsive image size
     const resizeImage = () => {
-        setSize(window.innerHeight / 4)
+        if (id == 45) { setSize(window.innerHeight / 4) }
+        else { setSize(window.innerHeight / 3) }
     }
     
     useEffect(() => {
         if (typeof window !== "undefined") {
             resizeImage()
         }
-    }, [])
+    }, [id])
     
     if (typeof window !== "undefined") {
         window.addEventListener("resize", (event) => {
