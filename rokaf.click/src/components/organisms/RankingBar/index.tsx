@@ -19,7 +19,7 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
                 setError(false);
                 setLoading(true);
                 const response = await axios.get(
-                    process.env.NEXT_PUBLIC_API_BASE_PATH + "locations",
+                    process.env.NEXT_PUBLIC_API_BASE_PATH + "locations/sort",
                 );
                 setSortedLocations(response.data);
             } catch (e) {
