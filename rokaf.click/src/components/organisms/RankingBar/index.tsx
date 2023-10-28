@@ -12,6 +12,7 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
     const [sortedLocations, setSortedLocations] = useState<Location[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [rank, setRank] = useState(0)
 
     useEffect(() => {
         const fetchSortedLocations = async () => {
@@ -36,11 +37,13 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
                         group'>
             <BottomBar>
                 <div className="hidden group-hover:block">
-                    <RankingList locationId={locationId} sortedLocations={sortedLocations}/>
+                    <RankingList rank={rank} setRank={setRank} locationId={locationId} sortedLocations={sortedLocations}/>
+                    {loading && <div>로딩중..</div>}
+                    {error && <div>에러가 발생했습니다</div>}
                 </div>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
-                    <p>부대 랭킹 {locationId}</p>
+                    <p>부대 랭킹 {locationId} {rank}</p>
                 </div>
             </BottomBar>
         </div>

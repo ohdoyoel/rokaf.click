@@ -10,8 +10,8 @@ interface LocationBarProps {
 
 export const LocationBar = ({setLocationId}: LocationBarProps) => {
     const [locations, setLocations] = useState<Location[]>([])
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const fetchLocations = async () => {
