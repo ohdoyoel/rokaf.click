@@ -15,7 +15,7 @@ export const RankingList = ({rank, setRank, locationId, sortedLocations}: Rankin
         let rank = 1
         const result = []
         for (const location of sortedLocations) {
-            result.push(<RankingItem rank={rank} id={location.id} logoSrc={location.logoSrc}
+            result.push(<RankingItem key={location.id} rank={rank} id={location.id} logoSrc={location.logoSrc}
                                     name={location.name} score={location.score}
                         />)
             if (location.id == locationId) { setRank(rank) }

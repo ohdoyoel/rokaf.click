@@ -8,13 +8,10 @@ interface CharacterBarProps {
 
 export const CharacterBar = ({setImageId}: CharacterBarProps) => {
     return (
-        <div className='absolute h-1/2 right-0 rounded-l-lg
-                        w-20 transition-all ease-in-out duration-150 hover:w-1/4
+        <div className='absolute inset-y-36 right-0 rounded-l-lg
+                        w-20 transition-all ease-in-out duration-150 hover:w-1/3
                         group'>
-            <SideBar>
-                <div className="hidden group-hover:block">
-                    <SelectCharacter setImageId={setImageId}/>
-                </div>
+            <SideBar isLocationBar={false}>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
                     <p className="text-3xl text-center pb-3">👚</p>
@@ -23,6 +20,9 @@ export const CharacterBar = ({setImageId}: CharacterBarProps) => {
                     <p className="font-medium text-3xl text-center pb-3">터</p>
                     <p className="font-medium text-3xl text-center">선</p>
                     <p className="font-medium text-3xl text-center">택</p>
+                </div>
+                <div className="hidden group-hover:block">
+                    <SelectCharacter setImageId={setImageId}/>
                 </div>
             </SideBar>
         </div>

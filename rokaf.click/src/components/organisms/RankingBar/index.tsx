@@ -36,14 +36,14 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
                         h-20 transition-all ease-in-out duration-150 hover:h-4/5
                         group'>
             <BottomBar>
+                <div className="group-hover:hidden
+                                grid absolute inset-0 place-content-center">
+                    <p className="text-3xl text-center">🏅 부대 랭킹 {locationId} {rank}</p>
+                </div>
                 <div className="hidden group-hover:block">
                     <RankingList rank={rank} setRank={setRank} locationId={locationId} sortedLocations={sortedLocations}/>
                     {loading && <div>로딩중..</div>}
                     {error && <div>에러가 발생했습니다</div>}
-                </div>
-                <div className="group-hover:hidden
-                                grid absolute inset-0 place-content-center">
-                    <p>부대 랭킹 {locationId} {rank}</p>
                 </div>
             </BottomBar>
         </div>
