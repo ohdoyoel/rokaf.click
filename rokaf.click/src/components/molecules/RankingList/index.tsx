@@ -25,9 +25,11 @@ export const RankingList = ({rank, setRank, locationId, sortedLocations}: Rankin
     }
 
     return (
-        <div>
-            <p>부대 랭킹 {locationId} {rank}</p>
-            {listAllSortedLocations()}
+        <div className="flex flex-col items-start">
+            <p className="text-xl text-center p-2">🏅 리더보드 {locationId} {rank}</p>
+            <ul id="locationList" className="h-full w-full p-1 overflow-x-hidden overflow-y-auto text-sm text-gray-700">
+                {listAllSortedLocations()}
+            </ul>
         </div>
     )
 }

@@ -41,7 +41,7 @@ export const SearchLocation = ({locations, setLocationId, locationId}: SearchLoc
 
     return (
         <div className="flex flex-col items-start">
-            <p className="text-xl text-center p-2">부대 바꾸기</p>
+            <p className="text-xl text-center p-2">🏕️ 부대 바꾸기</p>
             <SearchInput onKeyUp={onSearchInputKeyUp}/>
             <ul id="locationList" className="h-full w-full p-1 overflow-y-auto text-sm text-gray-700">
                 {listAllLocations()}

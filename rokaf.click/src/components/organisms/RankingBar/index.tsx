@@ -38,7 +38,7 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
             <BottomBar>
                 <div className="group-hover:hidden
                                 grid absolute inset-0 place-content-center">
-                    <p className="text-3xl text-center">🏅 부대 랭킹 {locationId} {rank}</p>
+                    <p className="text-3xl text-center">🏅 리더보드 {locationId} {rank}</p>
                 </div>
                 <div className="hidden group-hover:block">
                     <RankingList rank={rank} setRank={setRank} locationId={locationId} sortedLocations={sortedLocations}/>
