@@ -7,10 +7,11 @@ import { Dispatch, SetStateAction } from "react"
 
 interface SearchLocationProps {
     locations: Location[]
+    locationId: number
     setLocationId: Dispatch<SetStateAction<number>>
 }
 
-export const SearchLocation = ({locations, setLocationId}: SearchLocationProps) => {
+export const SearchLocation = ({locations, setLocationId, locationId}: SearchLocationProps) => {
     // filter function
     const onSearchInputKeyUp = () => { 
         let input, inputVal, ul, li;
@@ -33,16 +34,16 @@ export const SearchLocation = ({locations, setLocationId}: SearchLocationProps) 
         for (const location of locations) {
             result.push(<LocationItem key={location.id}
                         id={location.id} logoSrc={location.logoSrc} name={location.name}
-                        setLocationId={setLocationId}/>)
+                        setLocationId={setLocationId} isChecked={location.id === locationId}/>)
         }
         return result
     }
 
     return (
-        <div className="font-sans-medium">
-            <p>부대 바꾸기</p>
+        <div className="flex flex-col items-start">
+            <p className="text-xl text-center p-2">🏕️ 부대 바꾸기</p>
             <SearchInput onKeyUp={onSearchInputKeyUp}/>
-            <ul id="locationList" className="h-full w-full p-1 shadow overflow-y-auto text-sm text-gray-700">
+            <ul id="locationList" className="h-full w-full p-1 overflow-y-auto text-sm text-gray-700">
                 {listAllLocations()}
             </ul>
         </div>

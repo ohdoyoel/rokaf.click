@@ -7,8 +7,8 @@ interface BottomBarProps {
 export const BottomBar = ({children}: BottomBarProps) => {
     return (
         <div className='w-full h-full p-3
-                        bg-slate-300 shadow
-                        overflow-auto'>
+                        bg-zinc-300 shadow-2xl
+                        overflow-auto rounded-t-lg'>
             {children}
         </div>
     )
