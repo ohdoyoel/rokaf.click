@@ -13,7 +13,7 @@ export default function Home() {
   console.log(`locationId: ${locationId}`)
 
   return (
-    <main id="root" className="flex flex-col items-center justify-between w-screen h-screen pt-12 pb-24">
+    <main id="root" className="flex flex-col items-center justify-between w-screen h-screen pt-16 pb-24">
       <Header/>
       <LocationBar locationId={locationId} setLocationId={setLocationId}/>
       <CharacterButtonWithScore
