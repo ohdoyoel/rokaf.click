@@ -1,6 +1,6 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect, useState, useRef } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import { Score } from "@/src/components/atoms/Score";
 import axios from 'axios';
@@ -17,6 +17,7 @@ export const CharacterButtonWithScore = ({id, locationId}: CharacterButtonWithSc
     const [locationScore, setLocationScore] = useState(-1000)
     const locationScoreRef = useRef(-1000)
     const [size, setSize] = useState(0)
+    const locationIdRef = useRef(0)
     
     // responsive image size
     const resizeImage = () => {
@@ -44,12 +45,12 @@ export const CharacterButtonWithScore = ({id, locationId}: CharacterButtonWithSc
                 process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
                 )
                 score = response.data.score
-            } catch (e) {
-                console.log(e)
-            } finally {
-                setLocationScore(score)
-            }
+        } catch (e) {
+            console.log(e)
+        } finally {
+            setLocationScore(score)
         }
+    }
         
     // as location id change, call getLocationScore
     useEffect(() => {
@@ -58,23 +59,31 @@ export const CharacterButtonWithScore = ({id, locationId}: CharacterButtonWithSc
     }, [locationId])
 
     // patch location score
+    locationIdRef.current = locationId
     const patchLocationScore = async () => {
+        console.log(`locationId: ${locationIdRef.current} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
         try {
             axios.patch(
-                process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
+                process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationIdRef.current}`,
                 {"score": locationScoreRef.current + scoreRef.current}
-                )
-            } catch (e) {
+            )
+        } catch (e) {
             console.log(e)
         }
     }
+
+    // as location id change, call patchLocationScore
+    useLayoutEffect(() => {
+        console.log(locationId)
+        // locationId != 0 && patchLocationScore()
+        // setScore(0)
+    }, [locationId])
     
     // patch onbeforeunload
     scoreRef.current = score
     locationScoreRef.current = locationScore
     if (typeof window !== "undefined") {
         window.addEventListener("beforeunload", (event) => {
-            console.log(`locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
             locationId != 0 && patchLocationScore();
         });
     }
@@ -83,8 +92,8 @@ export const CharacterButtonWithScore = ({id, locationId}: CharacterButtonWithSc
         if (locationId == 0) {
             window.alert("부대를 선택해주세요!")
         } else {
-            console.log(`locationScore: ${locationScore}, score: ${score}`)
             setScore(score + 1)
+            console.log(`locationScore: ${locationScore}, score: ${score}`)
         }
     }
 

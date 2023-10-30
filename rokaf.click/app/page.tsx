@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Header } from '@/src/components/atoms/Header'
 import { CharacterButtonWithScore } from '@/src/components/organisms/CharacterButtonWithScore'
 import { LocationBar } from '@/src/components/organisms/LocationBar'

@@ -10,7 +10,6 @@ interface LocationItemProps {
 }
 
 export const LocationItem = ({id, logoSrc, name, setLocationId, isChecked}:LocationItemProps) => {
-    console.log(isChecked)
     return (
         <li onClick={() => setLocationId(id)}>
             <div className="flex w-full gap items-center pl-2 rounded hover:bg-gray-100">
