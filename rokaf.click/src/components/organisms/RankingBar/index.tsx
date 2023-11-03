@@ -1,5 +1,6 @@
 import { BottomBar } from "@/src/components/atoms/BottomBar"
 import { RankingList } from "@/src/components/molecules/RankingList"
+import { RankingItem } from "@/src/components/atoms/RankingItem"
 import { Location } from "@/src/types/data"
 import axios from "axios"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
@@ -9,10 +10,15 @@ interface RankingBarProps {
 }
 
 export const RankingBar = ({locationId}: RankingBarProps) => {
+    const [locations, setLocations] = useState<Location[]>([])
     const [sortedLocations, setSortedLocations] = useState<Location[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [rank, setRank] = useState(0)
+
+    const [logoSrc, setLogoSrc] = useState('')
+    const [name, setName] = useState('')
+    const [locationScore, setLocationScore] = useState(0)
 
     useEffect(() => {
         const fetchSortedLocations = async () => {
@@ -31,14 +37,29 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
         fetchSortedLocations();
     }, []);
 
+    useEffect(() => {
+        if (sortedLocations.length != 0 && rank != 0) {
+            setLogoSrc(sortedLocations[rank - 1].logoSrc)
+            setName(sortedLocations[rank - 1].name)
+            setLocationScore(sortedLocations[rank - 1].score)
+        }
+    }, [rank, sortedLocations])
+
     return (
         <div className='absolute inset-x-1/4 bottom-0
                         h-20 transition-all ease-in-out duration-150 hover:h-4/5
                         group'>
             <BottomBar>
-                <div className="group-hover:hidden
-                                grid absolute inset-0 place-content-center">
-                    <p className="text-3xl text-center">🏅 리더보드 {locationId} {rank}</p>
+                <div className="group-hover:hidden h-full
+                                grid grid-cols-3 gap-1 items-center">
+                    <p className="text-3xl text-left">🏅 리더보드</p>
+                    {rank == 0
+                    ? <p className="text-xl">부대를 선택해주세요</p>
+                    : <div className="col-span-2">
+                        <RankingItem rank={rank} id={locationId} logoSrc={logoSrc}
+                                    name={name} score={locationScore}/>
+                    </div>
+                    }
                 </div>
                 <div className="hidden group-hover:block">
                     <RankingList rank={rank} setRank={setRank} locationId={locationId} sortedLocations={sortedLocations}/>

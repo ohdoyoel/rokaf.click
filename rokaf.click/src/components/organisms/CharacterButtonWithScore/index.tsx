@@ -1,6 +1,6 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect, useState, useRef } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState, useRef, useLayoutEffect, RefObject, ForwardedRef } from 'react'
 import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import { Score } from "@/src/components/atoms/Score";
 import axios from 'axios';
@@ -8,83 +8,44 @@ import axios from 'axios';
 interface CharacterButtonWithScoreProps {
     id: number;
     locationId : number
-    size?: number;
+    _setScore: Dispatch<SetStateAction<number>>
+    // scoreRef: ForwardedRef<number>
 }
 
-export const CharacterButtonWithScore = ({id, locationId}: CharacterButtonWithScoreProps) => {
+export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
-    const scoreRef = useRef(0)
-    const [locationScore, setLocationScore] = useState(-1000)
-    const locationScoreRef = useRef(-1000)
+    // const scoreRef = useRef(0)
     const [size, setSize] = useState(0)
+    // const locationIdRef = useRef(0)
     
     // responsive image size
     const resizeImage = () => {
         if (id == 45) { setSize(window.innerHeight / 4) }
         else { setSize(window.innerHeight / 3) }
     }
-    
     useEffect(() => {
         if (typeof window !== "undefined") {
             resizeImage()
         }
     }, [id])
-    
     if (typeof window !== "undefined") {
         window.addEventListener("resize", (event) => {
             resizeImage()
         });
     }
 
-    // get location score
-    const getLocationScore = async () => {
-        let score: number = -999
-        try {
-            const response = await axios.get(
-                process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
-                )
-                score = response.data.score
-            } catch (e) {
-                console.log(e)
-            } finally {
-                setLocationScore(score)
-            }
-        }
-        
-    // as location id change, call getLocationScore
     useEffect(() => {
-        locationId != 0 && getLocationScore()
-        setScore(0)
+      setScore(0)
     }, [locationId])
-
-    // patch location score
-    const patchLocationScore = async () => {
-        try {
-            axios.patch(
-                process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${locationId}`,
-                {"score": locationScoreRef.current + scoreRef.current}
-                )
-            } catch (e) {
-            console.log(e)
-        }
-    }
-    
-    // patch onbeforeunload
-    scoreRef.current = score
-    locationScoreRef.current = locationScore
-    if (typeof window !== "undefined") {
-        window.addEventListener("beforeunload", (event) => {
-            console.log(`locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
-            locationId != 0 && patchLocationScore();
-        });
-    }
     
     const characterButtonClick = async () => {
         if (locationId == 0) {
             window.alert("부대를 선택해주세요!")
         } else {
-            console.log(`locationScore: ${locationScore}, score: ${score}`)
             setScore(score + 1)
+            _setScore(score + 1)
+            // scoreRef.current = score + 1
+            // console.log(`locationScore: ${locationScore}, score: ${score}`)
         }
     }
 
