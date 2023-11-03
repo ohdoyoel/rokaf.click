@@ -1,6 +1,6 @@
 export const Header = () => {
     return (
-        <div className='relative flex flex-col items-center'>
+        <div className='relative flex flex-col items-center scale-90'>
         <p className='font-thin text-xs absolute left-0 -top-5'>공군 병사가 사지방에서 만든</p>
         <p className='font-black text-6xl'>
             rokaf.click
