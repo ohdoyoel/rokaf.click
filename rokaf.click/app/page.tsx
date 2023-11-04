@@ -28,7 +28,7 @@ export default function Home() {
           console.log(e)
       } finally {
           locationScoreRef.current = score
-          console.log(`GET id:${_id} score:${locationScoreRef.current}`)
+          // console.log(`GET id:${_id} score:${locationScoreRef.current}`)
       }
   }
       
@@ -40,7 +40,7 @@ export default function Home() {
 
   // patch location score
   const patchLocationScore = async (_id: number) => {
-      console.log(`PATCH id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
+      // console.log(`PATCH id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
       try {
           axios.patch(
               process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
@@ -53,7 +53,7 @@ export default function Home() {
 
   // as location id change, call patchLocationScore
   useLayoutEffect(() => {
-      console.log(locationIdRef.current)
+      // console.log(locationIdRef.current)
       locationIdRef.current != 0 && patchLocationScore(locationIdRef.current)
   }, [locationId])
   

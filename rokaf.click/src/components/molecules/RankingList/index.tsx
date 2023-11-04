@@ -13,7 +13,7 @@ export const RankingList = ({rank, setRank, locationId, sortedLocations}: Rankin
     const [list, setList] = useState<React.JSX.Element[]>([])
 
     const listAllSortedLocations = () => {
-        console.log(`list build`)
+        // console.log(`list build`)
         let rank = 1
         const result = []
         for (const location of sortedLocations) {
