@@ -14,34 +14,39 @@ export default function Home() {
   const locationIdRef = useRef(0)
   const [score, setScore] = useState(0)
   const scoreRef = useRef(0)
-  const locationScoreRef = useRef(-1000)
+  // const locationScoreRef = useRef(-1000)
+  const promptRef = useRef(false)
+
+  useEffect(() => {
+    scoreRef.current = score
+  }, [score])
 
   // get location score
-  const getLocationScore = async (_id: number) => {
-      let score: number = -999
-      try {
-          const response = await axios.get(
-              process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
-              )
-              score = response.data.score
-      } catch (e) {
-          console.log(e)
-      } finally {
-          locationScoreRef.current = score
-          // console.log(`GET id:${_id} score:${locationScoreRef.current}`)
-      }
-  }
+  // const getLocationScore = async (_id: number) => {
+  //     let score: number = -999
+  //     try {
+  //         const response = await axios.get(
+  //             process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
+  //             )
+  //             score = response.data.score
+  //     } catch (e) {
+  //         console.log(e)
+  //     } finally {
+  //         locationScoreRef.current = score
+  //         // console.log(`GET id:${_id} score:${locationScoreRef.current}`)
+  //     }
+  // }
       
   // as location id change, call getLocationScore
   useEffect(() => {
     scoreRef.current = 0
     locationIdRef.current = locationId
-    locationIdRef.current != 0 && getLocationScore(locationIdRef.current)
+    // locationIdRef.current != 0 && getLocationScore(locationIdRef.current)
   }, [locationId])
   
   // post location score
   const postLocationScore = async (_id: number) => {
-      console.log(`POST id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
+      // console.log(`POST id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
       try {
           axios.post(
               process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
@@ -58,10 +63,13 @@ export default function Home() {
   }, [locationId])
   
   // post onbeforeunload
-  scoreRef.current = score
   if (typeof window !== "undefined") {
-      window.addEventListener("beforeunload", (event) => {
-          locationId != 0 && postLocationScore(locationIdRef.current);
+    window.addEventListener("beforeunload", (event) => {
+        // console.log(promptRef.current)
+        if (!promptRef.current) {
+          promptRef.current = true;
+          locationIdRef.current != 0 && postLocationScore(locationIdRef.current);
+      }
     });
   }
 
