@@ -10,7 +10,7 @@ interface RankingListProps {
     score: number
 }
 
-export const RankingList = ({rank, setRank, locationId, sortedLocations, score}: RankingListProps ) => {
+export const RankingList = ({rank, setRank, sortedLocations, locationId, score}: RankingListProps ) => {
     const [list, setList] = useState<React.JSX.Element[]>([])
 
     const listAllSortedLocations = () => {
@@ -31,6 +31,24 @@ export const RankingList = ({rank, setRank, locationId, sortedLocations, score}:
 
     useEffect(() => {
         (rank != 0) && sortedLocations[rank - 1].score++
+        if ((rank > 1) && sortedLocations[rank - 1].score > sortedLocations[rank - 2].score) {
+            var temp;
+            temp = sortedLocations[rank - 1].logoSrc
+            sortedLocations[rank - 1].logoSrc = sortedLocations[rank - 2].logoSrc
+            sortedLocations[rank - 2].logoSrc = temp
+            temp = sortedLocations[rank - 1].name
+            sortedLocations[rank - 1].name = sortedLocations[rank - 2].name
+            sortedLocations[rank - 2].name = temp
+            temp = sortedLocations[rank - 1].score
+            sortedLocations[rank - 1].score = sortedLocations[rank - 2].score
+            sortedLocations[rank - 2].score = temp
+            temp = sortedLocations[rank - 1].id
+            sortedLocations[rank - 1].id = sortedLocations[rank - 2].id
+            sortedLocations[rank - 2].id = temp
+
+            setRank(rank - 1)
+            // console.log(rank)
+        }
     }, [score])
 
     useEffect(() => {
