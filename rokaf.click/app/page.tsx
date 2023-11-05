@@ -45,7 +45,7 @@ export default function Home() {
       try {
           axios.patch(
               process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
-              {"score": locationScoreRef.current + scoreRef.current}
+              {"score": scoreRef.current}
           )
       } catch (e) {
           console.log(e)
