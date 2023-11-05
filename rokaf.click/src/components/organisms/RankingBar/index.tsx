@@ -7,10 +7,10 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 interface RankingBarProps {
     locationId: number
+    score: number
 }
 
-export const RankingBar = ({locationId}: RankingBarProps) => {
-    const [locations, setLocations] = useState<Location[]>([])
+export const RankingBar = ({locationId, score}: RankingBarProps) => {
     const [sortedLocations, setSortedLocations] = useState<Location[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -19,6 +19,10 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
     const [logoSrc, setLogoSrc] = useState('')
     const [name, setName] = useState('')
     const [locationScore, setLocationScore] = useState(0)
+
+    useEffect(() => {
+        setLocationScore(locationScore + 1)
+    }, [score])
 
     useEffect(() => {
         const fetchSortedLocations = async () => {
@@ -62,7 +66,7 @@ export const RankingBar = ({locationId}: RankingBarProps) => {
                     </div>
                 </div>
                 <div className="hidden group-hover:block">
-                    <RankingList rank={rank} setRank={setRank} locationId={locationId} sortedLocations={sortedLocations}/>
+                    <RankingList rank={rank} setRank={setRank} locationId={locationId} sortedLocations={sortedLocations} score={score}/>
                     {loading && <div>로딩중..</div>}
                     {error && <div>에러가 발생했습니다</div>}
                 </div>

@@ -83,7 +83,7 @@ export default function Home() {
         _setScore={setScore}
       />
       <CharacterBar setImageId={setImageId}/>
-      <RankingBar locationId={locationId}/>
+      <RankingBar locationId={locationId} score={score}/>
       <div/>
     </main>
   )

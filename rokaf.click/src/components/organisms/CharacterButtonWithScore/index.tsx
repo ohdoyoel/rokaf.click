@@ -45,7 +45,8 @@ export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterB
     }
 
     return (
-        <div className='transition ease-in-out duration-150 hover:scale-110 active:scale-105 overflow-hidden'>
+        <div className='transition ease-in-out duration-150 hover:scale-110 active:scale-105
+                        translate-y-5 active:translate-y-8'>
             <Score score={score}/>
             <CharacterButton id={id} size={size} onClick={characterButtonClick}/>
         </div>
