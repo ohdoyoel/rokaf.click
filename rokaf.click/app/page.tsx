@@ -54,7 +54,6 @@ export default function Home() {
 
   // as location id change, call patchLocationScore
   useLayoutEffect(() => {
-      // console.log(locationIdRef.current)
       locationIdRef.current != 0 && patchLocationScore(locationIdRef.current)
   }, [locationId])
   
