@@ -19,9 +19,9 @@ export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
                                 {(rank == 1) ? '🥇' : ((rank == 2) ? '🥈' : (rank == 3) ? '🥉' : rank)}
                 </p>
                 <LogoImage logoSrc={logoSrc} size={30}/>
-                <div className="grid grid-cols-3 w-full">
-                    <p className="col-span-2 text-sm px-4">{name}</p>
-                    <p className="text-sm text-right px-8">{score}</p>
+                <div className="grid grid-cols-3 place-items-center w-full">
+                    <p className="place-self-start col-span-2 text-sm px-4">{name}</p>
+                    <p className="place-self-end text-sm text-right px-8">{score}</p>
                 </div>
             </div>
     )

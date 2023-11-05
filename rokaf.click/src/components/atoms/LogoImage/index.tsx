@@ -6,7 +6,6 @@ interface LogoImageProps {
 }
 
 export const LogoImage = ({logoSrc, size}: LogoImageProps) => {
-    // const imageSource = '/images/logos/' + ((logoId < 10) ? `0${logoId}` : `${logoId}`) + '.png' 
     const imageSource = `/images/logos/${logoSrc}`
 
     return (

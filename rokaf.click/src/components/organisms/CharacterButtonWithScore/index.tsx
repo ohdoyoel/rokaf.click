@@ -9,14 +9,11 @@ interface CharacterButtonWithScoreProps {
     id: number;
     locationId : number
     _setScore: Dispatch<SetStateAction<number>>
-    // scoreRef: ForwardedRef<number>
 }
 
 export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
-    // const scoreRef = useRef(0)
     const [size, setSize] = useState(0)
-    // const locationIdRef = useRef(0)
     
     // responsive image size
     const resizeImage = () => {
@@ -44,8 +41,6 @@ export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterB
         } else {
             setScore(score + 1)
             _setScore(score + 1)
-            // scoreRef.current = score + 1
-            // console.log(`locationScore: ${locationScore}, score: ${score}`)
         }
     }
 

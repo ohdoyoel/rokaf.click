@@ -28,16 +28,17 @@ export default function Home() {
           console.log(e)
       } finally {
           locationScoreRef.current = score
-          console.log(`GET id:${_id} score:${locationScoreRef.current}`)
+          // console.log(`GET id:${_id} score:${locationScoreRef.current}`)
       }
   }
       
   // as location id change, call getLocationScore
   useEffect(() => {
+    scoreRef.current = 0
     locationIdRef.current = locationId
     locationIdRef.current != 0 && getLocationScore(locationIdRef.current)
   }, [locationId])
-
+  
   // patch location score
   const patchLocationScore = async (_id: number) => {
       console.log(`PATCH id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
@@ -53,7 +54,6 @@ export default function Home() {
 
   // as location id change, call patchLocationScore
   useLayoutEffect(() => {
-      console.log(locationIdRef.current)
       locationIdRef.current != 0 && patchLocationScore(locationIdRef.current)
   }, [locationId])
   
