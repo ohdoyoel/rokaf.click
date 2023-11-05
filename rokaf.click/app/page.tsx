@@ -34,13 +34,14 @@ export default function Home() {
       
   // as location id change, call getLocationScore
   useEffect(() => {
+    scoreRef.current = 0
     locationIdRef.current = locationId
     locationIdRef.current != 0 && getLocationScore(locationIdRef.current)
   }, [locationId])
-
+  
   // patch location score
   const patchLocationScore = async (_id: number) => {
-      // console.log(`PATCH id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
+      console.log(`PATCH id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
       try {
           axios.patch(
               process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
