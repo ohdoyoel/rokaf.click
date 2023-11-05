@@ -39,11 +39,11 @@ export default function Home() {
     locationIdRef.current != 0 && getLocationScore(locationIdRef.current)
   }, [locationId])
   
-  // patch location score
-  const patchLocationScore = async (_id: number) => {
-      console.log(`PATCH id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
+  // post location score
+  const postLocationScore = async (_id: number) => {
+      console.log(`POST id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
       try {
-          axios.patch(
+          axios.post(
               process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
               {"score": scoreRef.current}
           )
@@ -52,16 +52,16 @@ export default function Home() {
       }
   }
 
-  // as location id change, call patchLocationScore
+  // as location id change, call postLocationScore
   useLayoutEffect(() => {
-      locationIdRef.current != 0 && patchLocationScore(locationIdRef.current)
+      locationIdRef.current != 0 && postLocationScore(locationIdRef.current)
   }, [locationId])
   
-  // patch onbeforeunload
+  // post onbeforeunload
   scoreRef.current = score
   if (typeof window !== "undefined") {
       window.addEventListener("beforeunload", (event) => {
-          locationId != 0 && patchLocationScore(locationIdRef.current);
+          locationId != 0 && postLocationScore(locationIdRef.current);
     });
   }
 
