@@ -1,6 +1,9 @@
 # rokaf.click
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6886a8b4-fae3-4ee8-ac84-131e31f17f90/deploy-status)](https://app.netlify.com/sites/beautiful-cendol-31e2b4/deploys)
+
 https://beautiful-cendol-31e2b4.netlify.app
+
 https://app.netlify.com/sites/beautiful-cendol-31e2b4/overview
 
 - Feat	새로운 기능을 추가한 경우
