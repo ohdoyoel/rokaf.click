@@ -1,4 +1,7 @@
+import { Fragment, useEffect, useState } from "react";
+import { useTimeoutFn } from "react-use";
 import { LogoImage } from "../LogoImage";
+import { Transition } from '@headlessui/react'
 
 interface RankingItemProps {
     rank: number
@@ -9,6 +12,14 @@ interface RankingItemProps {
 }
 
 export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
+    const [isShowing, setIsShowing] = useState(true)
+    const [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 50)
+
+    useEffect(() => {
+        setIsShowing(false)
+        resetIsShowing()
+    }, [score])
+
     return (
             <div className="relative
                             items-center w-full h-10 pl-2 rounded hover:bg-gray-100
@@ -21,7 +32,18 @@ export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
                 <LogoImage logoSrc={logoSrc} size={30}/>
                 <div className="grid grid-cols-3 place-items-center w-full">
                     <p className="place-self-start col-span-2 text-sm px-4">{name}</p>
-                    <p className="place-self-end text-sm text-right px-8">{score}</p>
+                    <Transition
+                    as={Fragment}
+                    show={isShowing}
+                    enter="transform transition duration-[100ms] ease-in-out"
+                    enterFrom="opacity-100 scale-125"
+                    enterTo="opacity-100 scale-100"
+                    leave="transform transition duration-[100ms] ease-in-out"
+                    leaveFrom="opacity-100 scale-100"
+                    leaveTo="opacity-100 scale-125"
+                    >
+                        <p className="place-self-end text-sm text-right px-8">{score}</p>
+                    </Transition>
                 </div>
             </div>
     )
