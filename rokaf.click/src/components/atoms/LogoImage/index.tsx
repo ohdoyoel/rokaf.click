@@ -10,6 +10,7 @@ export const LogoImage = ({logoSrc, size}: LogoImageProps) => {
 
     return (
         <img // change this to Image when build next app
+        className='rounded-lg'
         src={imageSource}
         alt={imageSource}
         width={size}
