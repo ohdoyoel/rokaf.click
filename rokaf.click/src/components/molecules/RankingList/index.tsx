@@ -58,7 +58,7 @@ export const RankingList = ({rank, setRank, sortedLocations, locationId, score}:
     return (
         <div className="flex flex-col items-start">
             <div className="w-full grid grid-cols-3 gap-1 items-center">
-                <p className="text-xl text-left">🏅 리더보드 {score}</p>
+                <p className="text-xl text-left">🏅 리더보드</p>
                 <div className="col-span-2">
                     {rank == 0
                     ? <p className="text-sm text-right">부대를 선택해주세요</p>
