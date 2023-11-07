@@ -13,53 +13,56 @@ interface RankingListProps {
 export const RankingList = ({rank, setRank, sortedLocations, locationId, score}: RankingListProps ) => {
     const [list, setList] = useState<React.JSX.Element[]>([])
 
-    const listAllSortedLocations = () => {
+    const listAllLocations = (locs:Location[]) => {
         // console.log(`ranking list build`)
-        let rank = 1
+        let r = 1
         const result = []
-        for (const location of sortedLocations) {
-            result.push(<RankingItem key={location.id} rank={rank} id={location.id} logoSrc={location.logoSrc}
+        for (const location of locs) {
+            result.push(<RankingItem key={location.id} rank={r} id={location.id} logoSrc={location.logoSrc}
                                     name={location.name} score={location.score}
                         />)
             if (location.id == locationId) {
-                setRank(rank)
+                setRank(r)
             }
-            rank++
+            r++
         }
         return result
     }
 
     useEffect(() => {
-        (rank != 0) && sortedLocations[rank - 1].score++
-        while ((rank > 1) && sortedLocations[rank - 1].score > sortedLocations[rank - 2].score) {
+        rank != 0 && sortedLocations[rank - 1].score++
+    }, [score])
+
+    useEffect(() => {
+        if ((rank > 1) && (sortedLocations[rank - 1].score > sortedLocations[rank - 2].score)) {
             var temp;
-            temp = sortedLocations[rank - 1].logoSrc
+            temp =sortedLocations[rank - 1].logoSrc
             sortedLocations[rank - 1].logoSrc = sortedLocations[rank - 2].logoSrc
             sortedLocations[rank - 2].logoSrc = temp
-            temp = sortedLocations[rank - 1].name
+            temp =sortedLocations[rank - 1].name
             sortedLocations[rank - 1].name = sortedLocations[rank - 2].name
             sortedLocations[rank - 2].name = temp
-            temp = sortedLocations[rank - 1].score
+            temp =sortedLocations[rank - 1].score
             sortedLocations[rank - 1].score = sortedLocations[rank - 2].score
             sortedLocations[rank - 2].score = temp
-            temp = sortedLocations[rank - 1].id
+            temp =sortedLocations[rank - 1].id
             sortedLocations[rank - 1].id = sortedLocations[rank - 2].id
             sortedLocations[rank - 2].id = temp
 
             setRank(rank - 1)
             // console.log(rank)
         }
-    }, [score])
+    }, [score, rank])
 
     useEffect(() => {
-        setList(listAllSortedLocations())
-    }, [sortedLocations, locationId, score])
+        setList(listAllLocations(sortedLocations))
+    }, [sortedLocations, locationId, score, rank])
 
     return (
         <div className="flex flex-col items-start">
             <div className="w-full grid grid-cols-3 gap-1 items-center">
                 <p className="text-xl text-left">🏅 리더보드</p>
-                <div className="col-span-2">
+                <div className="col-span-2 px-2">
                     {rank == 0
                     ? <p className="text-sm text-right">부대를 선택해주세요</p>
                     : <RankingItem rank={rank} id={locationId} logoSrc={sortedLocations[rank - 1].logoSrc}
@@ -67,7 +70,7 @@ export const RankingList = ({rank, setRank, sortedLocations, locationId, score}:
                     }
                 </div>
             </div>
-            <ul id="locationList" className="h-full w-full p-1 overflow-x-hidden overflow-y-auto text-sm text-gray-700">
+            <ul id="locationList" className="h-full w-full px-8 py-2 overflow-x-hidden overflow-y-auto text-sm text-gray-700">
                 {list}
             </ul>
         </div>
