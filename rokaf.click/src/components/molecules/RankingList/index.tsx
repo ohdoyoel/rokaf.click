@@ -31,7 +31,7 @@ export const RankingList = ({rank, setRank, sortedLocations, locationId, score}:
 
     useEffect(() => {
         (rank != 0) && sortedLocations[rank - 1].score++
-        if ((rank > 1) && sortedLocations[rank - 1].score > sortedLocations[rank - 2].score) {
+        while ((rank > 1) && sortedLocations[rank - 1].score > sortedLocations[rank - 2].score) {
             var temp;
             temp = sortedLocations[rank - 1].logoSrc
             sortedLocations[rank - 1].logoSrc = sortedLocations[rank - 2].logoSrc
