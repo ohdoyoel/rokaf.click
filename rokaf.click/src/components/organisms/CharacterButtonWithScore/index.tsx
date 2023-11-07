@@ -37,7 +37,7 @@ export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterB
     
     const characterButtonClick = async () => {
         if (locationId == 0) {
-            window.alert("부대를 선택해주세요!")
+            window.alert("부대를 선택해주세요")
         } else {
             setScore(score + 1)
             _setScore(score + 1)
