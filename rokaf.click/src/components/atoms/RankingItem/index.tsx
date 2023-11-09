@@ -30,11 +30,11 @@ export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
                                 {(rank == 1) ? '🥇' : ((rank == 2) ? '🥈' : (rank == 3) ? '🥉' : rank)}
                 </p>
                 <LogoImage logoSrc={logoSrc} size={30}/>
-                <div className="grid grid-cols-3 place-items-center w-full content-stretch">
-                    <p className="place-self-start col-span-2 text-sm px-4">{name}</p>
+                <div className="grid grid-cols-4 h-full w-full place-items-center">
+                    <p className="w-full col-span-3 text-sm px-4">{name}</p>
                     <Transition
                     as={Fragment}
-                    show={isShowing}
+                    show={true}
                     enter="transform transition duration-[100ms] ease-in-out"
                     enterFrom="opacity-100 scale-125"
                     enterTo="opacity-100 scale-100"
@@ -42,7 +42,7 @@ export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-100 scale-125"
                     >
-                        <p className="justify-self-center text-sm text-right px-4">{score}</p>
+                        <p className="w-full col-span-1 text-sm text-right px-4">{score}</p>
                     </Transition>
                 </div>
             </div>

@@ -50,7 +50,7 @@ export const RankingBar = ({locationId, score}: RankingBarProps) => {
     }, [rank, sortedLocations])
 
     return (
-        <div className='absolute inset-x-1/4 bottom-0
+        <div className='absolute inset-x-60 bottom-0
                         h-20 transition-all ease-in-out duration-150 hover:h-4/5
                         group'>
             <BottomBar>
