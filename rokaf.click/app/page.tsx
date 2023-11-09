@@ -6,6 +6,7 @@ import { CharacterButtonWithScore } from '@/src/components/organisms/CharacterBu
 import { LocationBar } from '@/src/components/organisms/LocationBar'
 import { CharacterBar } from '@/src/components/organisms/CharacterBar'
 import { RankingBar } from '@/src/components/organisms/RankingBar'
+import { Card } from '@/src/components/atoms/Card'
 import axios from 'axios'
 
 export default function Home() {
@@ -84,6 +85,7 @@ export default function Home() {
       />
       <CharacterBar setImageId={setImageId}/>
       <RankingBar locationId={locationId} score={score}/>
+      <Card/>
       <div/>
     </main>
   )

@@ -1,6 +1,6 @@
 import { RankingItem } from "@/src/components/atoms/RankingItem"
 import { Location } from "@/src/types/data"
-import { Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, useState } from "react"
+import { Dispatch, SetStateAction, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 
 interface RankingListProps {
     rank: number
