@@ -8,9 +8,21 @@
 
 **rokaf.click 공군 부대 간 클릭 수로 경쟁합니다.**
 
-https://beautiful-cendol-31e2b4.netlify.app
+Link: https://beautiful-cendol-31e2b4.netlify.app
 
-## 
+## Functions
+
+### 1. LocationBar (부대 선택)
+
+나무위키와 위키백과에 있는 공군 편제 문서를 참고하여 부대 위치를 선택합니다.
+
+- 부대 위치를 선택하면 
+
+### 2. ChracterButtonWithScore
+
+캐릭터 이미지를 클릭하면 애니메이션과 함께 점수가 올라갑니다.
+
+
 
 
 ## Deployment
