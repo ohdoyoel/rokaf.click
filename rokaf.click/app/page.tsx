@@ -18,6 +18,23 @@ export default function Home() {
   // const locationScoreRef = useRef(-1000)
   const promptRef = useRef(false)
 
+  // const postView = async () => {
+  //     try {
+  //         axios.post(
+  //             process.env.NEXT_PUBLIC_API_BASE_PATH + `view`
+  //         )
+  //     } catch (e) {
+  //         console.log(e)
+  //     }
+  // }
+
+  // useEffect(() => {
+  //   if (promptRef.current){
+  //     promptRef.current = false
+  //     postView()
+  //   }
+  // }, [])
+
   useEffect(() => {
     scoreRef.current = score
   }, [score])
