@@ -34,7 +34,7 @@ export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
                     <p className="w-full col-span-3 text-sm px-4">{name}</p>
                     <Transition
                     as={Fragment}
-                    show={true}
+                    show={isShowing}
                     enter="transform transition duration-[100ms] ease-in-out"
                     enterFrom="opacity-100 scale-125"
                     enterTo="opacity-100 scale-100"
