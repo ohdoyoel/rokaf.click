@@ -3,7 +3,6 @@
 import { Dispatch, SetStateAction, useEffect, useState, useRef, useLayoutEffect, RefObject, ForwardedRef } from 'react'
 import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import { Score } from "@/src/components/atoms/Score";
-import axios from 'axios';
 
 interface CharacterButtonWithScoreProps {
     id: number;
@@ -45,8 +44,8 @@ export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterB
     }
 
     return (
-        <div className='transition ease-in-out duration-150 hover:scale-110 active:scale-105
-                        translate-y-5 active:translate-y-8'>
+        <div className={`transition ease-in-out duration-150 hover:scale-110 active:scale-105
+                        translate-y-5 active:translate-y-8 ${locationId == 0 ? `opacity-50` : `opacity-100`}`}>
             <Score score={score}/>
             <CharacterButton id={id} size={size} onClick={characterButtonClick}/>
         </div>
