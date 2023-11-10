@@ -56,7 +56,7 @@ export const RankingBar = ({locationId, score}: RankingBarProps) => {
             <BottomBar>
                 <div className="group-hover:hidden h-full
                                 grid grid-cols-3 gap-1 items-center">
-                    <p className="text-3xl text-left">🏅 리더보드</p>
+                    <p className="col-span-1 text-3xl text-left">🏅 리더보드</p>
                     <div className="col-span-2 px-2">
                         {rank == 0
                         ? <p className="text-xl text-right">부대를 선택해주세요</p>
