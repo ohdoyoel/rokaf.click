@@ -10,7 +10,7 @@ export const SearchInput = ({onKeyUp}: SearchInputProps) => {
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-                <input id="searchInput" type="text" onKeyUp={onKeyUp} className="block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg" placeholder="부대 이름"/>
+                <input id="searchInput" type="text" onKeyUp={onKeyUp} className="block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none" placeholder="부대 이름"/>
             </div>
     )
 }
