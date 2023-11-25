@@ -81,15 +81,20 @@ export default function Home() {
   }, [locationId])
   
   // post onbeforeunload
-  if (typeof window !== "undefined") {
-    window.addEventListener("beforeunload", (event) => {
-        // console.log(promptRef.current)
-        if (!promptRef.current) {
-          promptRef.current = true;
-          locationIdRef.current != 0 && postLocationScore(locationIdRef.current);
+  useEffect(() => {
+    const handleOnBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (!promptRef.current) {
+        promptRef.current = true;
+        locationIdRef.current != 0 && postLocationScore(locationIdRef.current);
       }
-    });
-  }
+      event.preventDefault()
+      return (event.returnValue = '')
+    }
+    if (typeof window != "undefined") {
+      window.addEventListener("beforeunload", handleOnBeforeUnload, {capture: true});
+      return () => {window.removeEventListener("beforeunload", handleOnBeforeUnload, {capture: true})}
+    }
+  }, [])
 
   return (
     <main id="root" className="flex flex-col items-center justify-between w-screen h-screen pt-16 pb-24">
