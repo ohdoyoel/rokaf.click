@@ -19,7 +19,7 @@ export const SelectCharacter = ({setImageId}:SelectImageProps) => {
     return (
         <div className="flex flex-col items-start">
             <p className="text-xl text-center p-2">👚 캐릭터 바꾸기</p>
-            <div className="flex flex-wrap justify-evenly items-center">
+            <div className="flex flex-wrap items-center">
                 {CharacterList()}
             </div>
         </div>
