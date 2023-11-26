@@ -28,8 +28,8 @@ React와 NextJS를 공부한 후 이들을 사용하여 진행해보고 싶은 �
 
 ![rokaf click - Chrome 2023-11-27 01-19-32](https://github.com/ohdoyoel/rokaf.click/assets/32637779/c914895b-86f2-4799-9be8-90f1b8ace6f7)
 
-> - 부대 위치를 선택하면 CharacterButtonWithScore가 활성화됩니다.
-> - 부대 위치를 선택하면 RankingBar에 현재 부대 랭크 정보가 표시됩니다.
+> - 부대 위치를 선택하면 캐릭터가 활성화됩니다.
+> - 부대 위치를 선택하면 리더보드에 현재 부대 랭크 정보가 표시됩니다.
 
 ### 2. 캐릭터 선택
 
@@ -45,7 +45,7 @@ React와 NextJS를 공부한 후 이들을 사용하여 진행해보고 싶은 �
 
 ![rokaf click - Chrome 2023-11-27 01-08-03 (1)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/47650e83-5bbb-4dd8-9641-e6cdef019ced)
 
-올라간 점수는 리더보드에서 업데이트된 랭크와 점수로 표시됩니다.
+> 올라간 점수는 리더보드에서 업데이트된 랭크와 점수로 표시됩니다.
 
 ### 4. RankingBar (리더보드)
 
@@ -53,7 +53,7 @@ React와 NextJS를 공부한 후 이들을 사용하여 진행해보고 싶은 �
 
 ![rokaf click - Chrome 2023-11-27 01-31-47](https://github.com/ohdoyoel/rokaf.click/assets/32637779/4cfa51ef-366b-4b56-82eb-d503603c45e5)
 
-> - 캐릭터를 클릭할 때마다 업데이트됩니다.
+> 캐릭터를 클릭할 때마다 업데이트됩니다.
 
 ### 5. Custom API
 
