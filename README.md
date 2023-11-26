@@ -14,7 +14,7 @@ Link: https://beautiful-cendol-31e2b4.netlify.app (rokaf.click으로 custom doma
 
 **rokaf.click 공군 부대 간 클릭 수로 경쟁합니다.**
 
-![rokaf click - Chrome 2023-11-27 01-08-03 (1)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/47650e83-5bbb-4dd8-9641-e6cdef019ced)
+![rokaf click - Chrome 2023-11-27 01-08-03 (3)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/32786748-962c-4a70-bc16-de6507d647f1)
 
 POPCAT.CLICK 이라는 사이트를 알고 있나요? 국가 간 클릭 수를 이용해 순위를 매기는 게임을 할 수 있는 사이트입니다. **해당 게임을 공군 부대끼리 진행하면 어떨까요? rokaf.click은 이 아이디어에서 시작되었습니다.**
 
@@ -26,7 +26,7 @@ React와 NextJS를 공부한 후 이들을 사용하여 진행해보고 싶은 �
 
 이용자의 부대 위치를 선택합니다. 부대 위치는 나무위키와 위키백과에 있는 공군 편제 문서를 참고하여 작성되었습니다.
 
-![rokaf click - Chrome 2023-11-27 01-19-32](https://github.com/ohdoyoel/rokaf.click/assets/32637779/c914895b-86f2-4799-9be8-90f1b8ace6f7)
+![rokaf click - Chrome 2023-11-27 01-19-32 (1)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/f4892c0e-b813-4e93-ab75-8a98149fa6aa)
 
 > - 부대 위치를 선택하면 캐릭터가 활성화됩니다.
 > - 부대 위치를 선택하면 리더보드에 현재 부대 랭크 정보가 표시됩니다.
@@ -35,23 +35,23 @@ React와 NextJS를 공부한 후 이들을 사용하여 진행해보고 싶은 �
 
 버튼의 캐릭터 이미지를 선택합니다.
 
-![rokaf click - Chrome 2023-11-27 01-24-21 (2)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/e8ab6380-b719-4fe8-b5da-4640548a43a6)
+![rokaf click - Chrome 2023-11-27 01-24-21 (3)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/0d79ab59-1d9d-497b-8aad-29eecddd746f)
 
 > 캐릭터의 디자인은 '공군이 내놓은 디자인 - 뚠뚠이 의복캐릭터 (작성자: 병장 이성선)'을 사용하였습니다.
 
-### 3. CharacterButtonWithScore (캐릭터 버튼)
+### 3. 캐릭터 버튼
 
 캐릭터 이미지를 클릭하면 애니메이션과 함께 점수가 올라갑니다.
 
-![rokaf click - Chrome 2023-11-27 01-08-03 (1)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/47650e83-5bbb-4dd8-9641-e6cdef019ced)
+![rokaf click - Chrome 2023-11-27 01-08-03 (3)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/32786748-962c-4a70-bc16-de6507d647f1)
 
 > 올라간 점수는 리더보드에서 업데이트된 랭크와 점수로 표시됩니다.
 
-### 4. RankingBar (리더보드)
+### 4. 리더보드
 
 모든 부대를 클릭 수로 정렬하여 그들의 랭크를 표시합니다.
 
-![rokaf click - Chrome 2023-11-27 01-31-47](https://github.com/ohdoyoel/rokaf.click/assets/32637779/4cfa51ef-366b-4b56-82eb-d503603c45e5)
+![rokaf click - Chrome 2023-11-27 01-31-47 (2)](https://github.com/ohdoyoel/rokaf.click/assets/32637779/24ffda30-642a-42d3-8f09-378f213fdffa)
 
 > 캐릭터를 클릭할 때마다 업데이트됩니다.
 
