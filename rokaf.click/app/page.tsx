@@ -8,6 +8,7 @@ import { CharacterBar } from '@/src/components/organisms/CharacterBar'
 import { RankingBar } from '@/src/components/organisms/RankingBar'
 import { Card } from '@/src/components/atoms/Card'
 import axios from 'axios'
+import { Statistics } from '@/src/components/atoms/Statistics'
 
 export default function Home() {
   const [imageId, setImageId] = useState(1)
@@ -17,23 +18,6 @@ export default function Home() {
   const scoreRef = useRef(0)
   // const locationScoreRef = useRef(-1000)
   const promptRef = useRef(false)
-
-  // const postView = async () => {
-  //     try {
-  //         axios.post(
-  //             process.env.NEXT_PUBLIC_API_BASE_PATH + `view`
-  //         )
-  //     } catch (e) {
-  //         console.log(e)
-  //     }
-  // }
-
-  // useEffect(() => {
-  //   if (promptRef.current){
-  //     promptRef.current = false
-  //     postView()
-  //   }
-  // }, [])
 
   useEffect(() => {
     scoreRef.current = score
@@ -108,6 +92,7 @@ export default function Home() {
       <CharacterBar setImageId={setImageId}/>
       <RankingBar locationId={locationId} score={score}/>
       <Card/>
+      <Statistics/>
       <div/>
     </main>
   )

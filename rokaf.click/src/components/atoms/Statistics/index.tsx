@@ -1,10 +1,27 @@
-import React from "react"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
 
 export const Statistics = () => {
+    const [todayClicked, setTodayClicked] = useState(0)
+    const [totalClicked, setTotalClicked] = useState(0)
+
+    // get statistics
+    useEffect(() => {
+        const fetchStat = async () => {
+            const response = await axios.get(
+                process.env.NEXT_PUBLIC_API_BASE_PATH + `clicked`,
+            )
+            return response.data
+        }
+        fetchStat().then((res) => {
+            setTodayClicked(res.today)
+            setTotalClicked(res.total)
+        })
+    }, [])
 
     return (
         <div className='absolute bottom-4 right-4
-                        transition-all ease-in-out duration-0 hover:w-48 hover:h-auto
+                        transition-all ease-in-out duration-0 hover:w-52 hover:h-auto
                         w-8 h-8 bg-zinc-800/80 rounded-lg p-2
                         group'>
         
@@ -33,13 +50,11 @@ export const Statistics = () => {
                             <path d="M436.869,244.62c8.14,0,15-6.633,15-15v-48.479c0-8.284-6.716-15-15-15c-8.284,0-15,6.716-15,15v12.119L269.52,40.044   c-3.148-3.165-7.536-4.767-11.989-4.362c-4.446,0.403-8.482,2.765-11.011,6.445L131.745,209.185L30.942,144.969   c-6.987-4.451-16.26-2.396-20.71,4.592c-4.451,6.987-2.396,16.259,4.592,20.71l113.021,72c2.495,1.589,5.286,2.351,8.046,2.351   c4.783,0,9.475-2.285,12.376-6.507L261.003,74.025L400.8,214.62h-12.41c-8.284,0-15,6.716-15,15c0,8.284,6.716,15,15,15   c6.71,0,41.649,0,48.443,0H436.869z"/>
                         </g>
                     </svg>
-                    <a className="grow h-full text-sm text-slate-50 pl-2">statistics</a>
+                    <a className="grow h-full text-sm text-slate-50 pl-2">클릭 통계</a>
                 </div>
                 <ul className="w-full list-inside list-disc py-2">
-                    <li className="text-[1px] font-thin text-slate-50 break-all">Today Visited: </li>
-                    <li className="text-[1px] font-thin text-slate-50 break-all">Total Visited: </li>
-                    <li className="text-[1px] font-thin text-slate-50 break-all">Today Clicked: </li>
-                    <li className="text-[1px] font-thin text-slate-50 break-all">Total Clicked: </li>
+                    <li className="text-xs font-thin text-slate-50 break-all">Today: {todayClicked.toLocaleString()}</li>
+                    <li className="text-xs font-thin text-slate-50 break-all">Total: {totalClicked.toLocaleString()}</li>
                 </ul>
             </div>
         </div>

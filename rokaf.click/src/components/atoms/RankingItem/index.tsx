@@ -24,7 +24,7 @@ export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
             <div className="relative
                             items-center w-full h-10 pl-2 rounded hover:bg-gray-100
                             transition ease-in-out duration-150
-                            hover:scale-[1.06] active:scale-[1.03]
+                            hover:scale-[1.03] active:scale-[1.015]
                             flex">
                 <p className="text-sm px-2 w-12">
                                 {(rank == 1) ? '🥇' : ((rank == 2) ? '🥈' : (rank == 3) ? '🥉' : rank)}
@@ -36,13 +36,13 @@ export const RankingItem = ({rank, name, score, logoSrc}:RankingItemProps) => {
                     as={Fragment}
                     show={isShowing}
                     enter="transform transition duration-[100ms] ease-in-out"
-                    enterFrom="opacity-100 scale-125"
+                    enterFrom="opacity-100 scale-110"
                     enterTo="opacity-100 scale-100"
                     leave="transform transition duration-[100ms] ease-in-out"
                     leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-100 scale-125"
+                    leaveTo="opacity-100 scale-110"
                     >
-                        <p className="w-full col-span-1 text-sm text-right px-4">{score}</p>
+                        <p className="w-full col-span-1 text-sm text-right px-4">{score.toLocaleString()}</p>
                     </Transition>
                 </div>
             </div>
