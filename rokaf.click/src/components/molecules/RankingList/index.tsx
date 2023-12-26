@@ -70,7 +70,7 @@ export const RankingList = ({rank, setRank, sortedLocations, locationId, score}:
                     }
                 </div>
             </div>
-            <ul id="locationList" className="h-full w-full px-8 py-2 overflow-x-hidden overflow-y-auto text-sm text-gray-700">
+            <ul id="locationList" className="h-full w-full px-4 md:px-8 py-2 overflow-x-hidden overflow-y-auto text-sm text-gray-700">
                 {list}
             </ul>
         </div>
