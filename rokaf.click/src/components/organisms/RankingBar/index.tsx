@@ -50,18 +50,18 @@ export const RankingBar = ({locationId, score}: RankingBarProps) => {
     }, [rank, sortedLocations])
 
     return (
-        <div className='absolute inset-x-60 bottom-0
-                        h-20 transition-all ease-in-out duration-150 hover:h-4/5
+        <div className='absolute inset-x-4 sm:inset-x-16 md:inset-x-28 bottom-0
+                        h-16 transition-all ease-in-out duration-150 hover:h-4/5
                         group'>
             <BottomBar>
                 <div className="group-hover:hidden h-full
                                 grid grid-cols-3 gap-1 items-center">
-                    <p className="col-span-1 text-3xl text-left">🏅 리더보드</p>
-                    <div className="col-span-2 px-2">
-                        {rank == 0
+                    <p className="col-span-3 sm:col-span-1 text-3xl text-center sm:text-left">🏅 리더보드</p>
+                    <div className="col-span-0 sm:col-span-2 px-2 invisible sm:visible">
+                        {(rank == 0
                         ? <p className="text-xl text-right">부대를 선택해주세요</p>
                         : <RankingItem rank={rank} id={locationId} logoSrc={logoSrc}
-                                        name={name} score={locationScore}/>
+                                        name={name} score={locationScore}/>)
                         }
                     </div>
                 </div>

@@ -33,7 +33,7 @@ export const LocationBar = ({setLocationId, locationId}: LocationBarProps) => {
 
     return (
         <div className='absolute inset-y-36 left-0 rounded-r-lg
-                        w-20 transition-all ease-in-out duration-150 hover:w-1/3
+                        w-12 sm:w-16 md:w-20 transition-all ease-in-out duration-150 hover:w-2/3 sm:hover:w-1/2 lg:hover:w-1/3
                         group'>
             <SideBar isLocationBar={true}>
                 <div className="group-hover:hidden
