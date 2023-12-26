@@ -11,6 +11,7 @@ export const SelectCharacter = ({setImageId}:SelectImageProps) => {
         // [1, 2, 9, 19, 20, 21, 24, 25, 26, 27, 47, 54]
         const result = []
         for (const i of characterCandidates) {
+            if (i === 45) continue
             result.push(<CharacterItem key={i} setImageId={setImageId} id={i} size={80}/>)
         }
         return result
