@@ -83,12 +83,12 @@ export default function Home() {
   return (
     <main id="root" className="flex flex-col items-center justify-between w-screen h-screen pt-16 pb-24">
       <Header/>
-      <LocationBar locationId={locationId} setLocationId={setLocationId}/>
       <CharacterButtonWithScore
         id={imageId}
         locationId={locationId}
         _setScore={setScore}
       />
+      <LocationBar locationId={locationId} setLocationId={setLocationId}/>
       <CharacterBar setImageId={setImageId}/>
       <RankingBar locationId={locationId} score={score}/>
       <Card/>
