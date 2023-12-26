@@ -10,7 +10,7 @@
 
 ## Intro
 
-Link: https://beautiful-cendol-31e2b4.netlify.app (rokaf.click으로 custom domain set 예정)
+Link: https://rokaf.click/
 
 **rokaf.click 공군 부대 간 클릭 수로 경쟁합니다.**
 
