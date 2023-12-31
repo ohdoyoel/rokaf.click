@@ -26,6 +26,10 @@ export const metadata: Metadata = {
       rel: 'apple-icon-precomposed',
       url: '/icons/apple-icon-precomposed.png'
     }
+  },
+  openGraph: {
+    title: 'rokaf.click',
+    description: '공군 부대 간 클릭 수로 경쟁합니다.',
   }
 }
 
