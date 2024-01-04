@@ -1,23 +1,24 @@
-import axios from "axios"
+import { supabase } from "@/app/lib/initSupabase"
 import React, { useEffect, useState } from "react"
 
 export const Statistics = () => {
-    const [todayClicked, setTodayClicked] = useState(0)
-    const [totalClicked, setTotalClicked] = useState(0)
+    const [todayClicked, setTodayClicked] = useState<number>(0)
+    const [totalClicked, setTotalClicked] = useState<number>(0)
+
+    const fetchStat = async () => {
+        let { data: clicks, error } = await supabase
+                .from('clicks')
+                .select('id,today,total')
+                .order('id', { ascending: false })
+                .limit(1);
+        clicks && setTodayClicked(clicks[0].today)
+        clicks && setTotalClicked(clicks[0].total)
+    }
 
     // get statistics
-    // useEffect(() => {
-    //     const fetchStat = async () => {
-    //         const response = await axios.get(
-    //             process.env.NEXT_PUBLIC_API_BASE_PATH + `clicked`,
-    //         )
-    //         return response.data
-    //     }
-    //     fetchStat().then((res) => {
-    //         setTodayClicked(res.today)
-    //         setTotalClicked(res.total)
-    //     })
-    // }, [])
+    useEffect(() => {
+        fetchStat()
+    }, [])
 
     return (
         <div className='absolute bottom-4 right-4
@@ -53,8 +54,8 @@ export const Statistics = () => {
                     <a className="grow h-full text-sm text-slate-50 pl-2">클릭 통계</a>
                 </div>
                 <ul className="w-full list-inside list-disc py-2">
-                    <li className="text-xs font-thin text-slate-50 break-all">Today: {todayClicked.toLocaleString()}</li>
-                    <li className="text-xs font-thin text-slate-50 break-all">Total: {totalClicked.toLocaleString()}</li>
+                    <li className="text-xs font-thin text-slate-50 break-all">Today: {todayClicked}</li>
+                    <li className="text-xs font-thin text-slate-50 break-all">Total: {totalClicked}</li>
                 </ul>
             </div>
         </div>

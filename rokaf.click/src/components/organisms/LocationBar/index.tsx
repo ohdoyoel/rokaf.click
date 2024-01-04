@@ -1,7 +1,6 @@
 import { SideBar } from "@/src/components/atoms/SideBar"
 import { SearchLocation } from "@/src/components/molecules/SearchLocation"
 import { Location } from "@/src/types/data"
-import axios from "axios"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { supabase } from '@/app/lib/initSupabase';
 
@@ -21,13 +20,14 @@ export const LocationBar = ({setLocationId, locationId}: LocationBarProps) => {
             setLoading(true);
             let { data: locations, error } = await supabase
                 .from('locations')
-                .select('name')
-            console.log(error);
-            setLocations(locations);
+                .select('*')
+                .order('id', {ascending: true})
+            locations && setLocations(locations)
         } catch (e) {
             setError(true)
+        } finally {
+            setLoading(false)
         }
-        setLoading(false)
     };
 
     useEffect(() => {

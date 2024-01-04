@@ -9,6 +9,7 @@ import { RankingBar } from '@/src/components/organisms/RankingBar'
 import { Card } from '@/src/components/atoms/Card'
 import axios from 'axios'
 import { Statistics } from '@/src/components/atoms/Statistics'
+import { supabase } from './lib/initSupabase'
 
 export default function Home() {
   const [imageId, setImageId] = useState(1)
@@ -23,22 +24,6 @@ export default function Home() {
     scoreRef.current = score
   }, [score])
 
-  // get location score
-  // const getLocationScore = async (_id: number) => {
-  //     let score: number = -999
-  //     try {
-  //         const response = await axios.get(
-  //             process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
-  //             )
-  //             score = response.data.score
-  //     } catch (e) {
-  //         console.log(e)
-  //     } finally {
-  //         locationScoreRef.current = score
-  //         // console.log(`GET id:${_id} score:${locationScoreRef.current}`)
-  //     }
-  // }
-      
   // as location id change, call getLocationScore
   useEffect(() => {
     scoreRef.current = 0
@@ -50,10 +35,8 @@ export default function Home() {
   const postLocationScore = async (_id: number) => {
       // console.log(`POST id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
       try {
-          axios.post(
-              process.env.NEXT_PUBLIC_API_BASE_PATH + `locations/${_id}`,
-              {"score": scoreRef.current}
-          )
+		const { data, error } = await supabase
+			.rpc('update_location_score', { rowid: _id, countvalue: scoreRef.current })
       } catch (e) {
           console.log(e)
       }
