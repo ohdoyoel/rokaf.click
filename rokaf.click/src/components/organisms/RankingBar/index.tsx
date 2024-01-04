@@ -24,22 +24,22 @@ export const RankingBar = ({locationId, score}: RankingBarProps) => {
         setLocationScore(locationScore + 1)
     }, [score])
 
-    useEffect(() => {
-        const fetchSortedLocations = async () => {
-            try {
-                setError(false);
-                setLoading(true);
-                const response = await axios.get(
-                    process.env.NEXT_PUBLIC_API_BASE_PATH + "locations/sort",
-                );
-                setSortedLocations(response.data);
-            } catch (e) {
-                setError(true)
-            }
-            setLoading(false)
-        };
-        fetchSortedLocations();
-    }, []);
+    // useEffect(() => {
+    //     const fetchSortedLocations = async () => {
+    //         try {
+    //             setError(false);
+    //             setLoading(true);
+    //             const response = await axios.get(
+    //                 process.env.NEXT_PUBLIC_API_BASE_PATH + "locations/sort",
+    //             );
+    //             setSortedLocations(response.data);
+    //         } catch (e) {
+    //             setError(true)
+    //         }
+    //         setLoading(false)
+    //     };
+    //     fetchSortedLocations();
+    // }, []);
 
     useEffect(() => {
         if (sortedLocations.length != 0 && rank != 0) {

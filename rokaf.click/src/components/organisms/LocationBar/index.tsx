@@ -3,6 +3,7 @@ import { SearchLocation } from "@/src/components/molecules/SearchLocation"
 import { Location } from "@/src/types/data"
 import axios from "axios"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { supabase } from '@/app/lib/initSupabase';
 
 interface LocationBarProps {
     locationId: number
@@ -14,20 +15,22 @@ export const LocationBar = ({setLocationId, locationId}: LocationBarProps) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
 
+    const fetchLocations = async () => {
+        try {
+            setError(false);
+            setLoading(true);
+            let { data: locations, error } = await supabase
+                .from('locations')
+                .select('name')
+            console.log(error);
+            setLocations(locations);
+        } catch (e) {
+            setError(true)
+        }
+        setLoading(false)
+    };
+
     useEffect(() => {
-        const fetchLocations = async () => {
-            try {
-                setError(false);
-                setLoading(true);
-                const response = await axios.get(
-                    process.env.NEXT_PUBLIC_API_BASE_PATH + "locations",
-                );
-                setLocations(response.data);
-            } catch (e) {
-                setError(true)
-            }
-            setLoading(false)
-        };
         fetchLocations();
     }, []);
 

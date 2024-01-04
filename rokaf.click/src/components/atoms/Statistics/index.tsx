@@ -6,18 +6,18 @@ export const Statistics = () => {
     const [totalClicked, setTotalClicked] = useState(0)
 
     // get statistics
-    useEffect(() => {
-        const fetchStat = async () => {
-            const response = await axios.get(
-                process.env.NEXT_PUBLIC_API_BASE_PATH + `clicked`,
-            )
-            return response.data
-        }
-        fetchStat().then((res) => {
-            setTodayClicked(res.today)
-            setTotalClicked(res.total)
-        })
-    }, [])
+    // useEffect(() => {
+    //     const fetchStat = async () => {
+    //         const response = await axios.get(
+    //             process.env.NEXT_PUBLIC_API_BASE_PATH + `clicked`,
+    //         )
+    //         return response.data
+    //     }
+    //     fetchStat().then((res) => {
+    //         setTodayClicked(res.today)
+    //         setTotalClicked(res.total)
+    //     })
+    // }, [])
 
     return (
         <div className='absolute bottom-4 right-4
