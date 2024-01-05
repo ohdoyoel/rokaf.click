@@ -1,18 +1,20 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect, useState, useRef, useLayoutEffect, RefObject, ForwardedRef } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState} from 'react'
 import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import { Score } from "@/src/components/atoms/Score";
 
 interface CharacterButtonWithScoreProps {
-    id: number;
+    next: number
+    id: number
     locationId : number
     _setScore: Dispatch<SetStateAction<number>>
 }
 
-export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterButtonWithScoreProps) => {
+export const CharacterButtonWithScore = ({next, id, locationId, _setScore}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
     const [size, setSize] = useState(0)
+    const [ping, setPing] = useState(false)
     
     // responsive image size
     const resizeImage = () => {
@@ -31,6 +33,14 @@ export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterB
     }
 
     useEffect(() => {
+            let timer = setTimeout(() => setPing(false), 500)
+            return () => {
+                clearTimeout(timer)
+                setPing(true)
+            };
+    }, [next, locationId])
+
+    useEffect(() => {
       setScore(0)
     }, [locationId])
     
@@ -45,9 +55,14 @@ export const CharacterButtonWithScore = ({id, locationId, _setScore}: CharacterB
 
     return (
         <div className={`transition ease-in-out duration-150 hover:scale-110 active:scale-105
-                        translate-y-5 active:translate-y-8 ${locationId == 0 ? `opacity-50` : `opacity-100`}`}>
+                        translate-y-5 active:translate-y-8 ${locationId == 0 ? `opacity-50` : `opacity-100`}
+                        ${ping ? `animate-ping` : ``}
+                        flex flex-col items-center`}>
             <Score score={score}/>
             <CharacterButton id={id} size={size} onClick={characterButtonClick}/>
+            {next < 0
+            ? <p className='text-center text-md'>모든 캐릭터 획득! 당신은 자랑스러운 공군인이에요</p>
+            : <p className='text-center text-md'>다음 캐릭터 획득까지 {next - score} 클릭 남음</p>}
         </div>
     )
 }
