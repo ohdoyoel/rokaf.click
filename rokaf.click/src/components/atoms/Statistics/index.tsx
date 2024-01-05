@@ -8,7 +8,7 @@ export const Statistics = () => {
     const fetchStat = async () => {
         let { data: clicks, error } = await supabase
                 .from('clicks')
-                .select('id,today,total')
+                .select('id,created_at,click')
                 .order('id', { ascending: false })
                 .limit(1);
         clicks && setTodayClicked(clicks[0].today)

@@ -7,7 +7,6 @@ import { LocationBar } from '@/src/components/organisms/LocationBar'
 import { CharacterBar } from '@/src/components/organisms/CharacterBar'
 import { RankingBar } from '@/src/components/organisms/RankingBar'
 import { Card } from '@/src/components/atoms/Card'
-import axios from 'axios'
 import { Statistics } from '@/src/components/atoms/Statistics'
 import { supabase } from './lib/initSupabase'
 
@@ -22,6 +21,7 @@ export default function Home() {
 
   useEffect(() => {
     scoreRef.current = score
+    console.log(new Date())
   }, [score])
 
   // as location id change, call getLocationScore
