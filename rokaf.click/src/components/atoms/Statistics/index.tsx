@@ -2,17 +2,40 @@ import { supabase } from "@/app/lib/initSupabase"
 import React, { useEffect, useState } from "react"
 
 export const Statistics = () => {
-    const [todayClicked, setTodayClicked] = useState<number>(0)
-    const [totalClicked, setTotalClicked] = useState<number>(0)
+    const [todayClick, setTodayClick] = useState<{click:any}[]>([])
+    const [totalClick, setTotalClick] = useState<{click:any}[]>([])
+    const [todayClicked, setTodayClicked] = useState<number>(-1)
+    const [totalClicked, setTotalClicked] = useState<number>(-1)
+
+    useEffect(() => {
+        let total = 0;
+        totalClick && totalClick.forEach((c) => {
+            total += c.click;
+        })
+        totalClick && setTotalClicked(total)
+    }, [totalClick])
+
+    useEffect(() => {
+        let today = 0;
+        todayClick && todayClick.forEach((c) => {
+            today += c.click;
+        })
+        todayClick && setTodayClicked(today)
+    }, [todayClick])
 
     const fetchStat = async () => {
-        let { data: clicks, error } = await supabase
-                .from('clicks')
-                .select('id,created_at,click')
-                .order('id', { ascending: false })
-                .limit(1);
-        clicks && setTodayClicked(clicks[0].today)
-        clicks && setTotalClicked(clicks[0].total)
+        let { data: fetchedTotalClick } = await supabase
+            .from('clicks')
+            .select('click')
+        fetchedTotalClick && setTotalClick(fetchedTotalClick)
+        
+        let now = new Date();
+        now.setHours(0, 0, 0, 0);
+        let { data: fetchedTodayClick } = await supabase
+            .from('clicks')
+            .select('click')
+            .gte('created_at', now.toISOString())
+        fetchedTodayClick && setTodayClick(fetchedTodayClick)
     }
 
     // get statistics
@@ -54,8 +77,8 @@ export const Statistics = () => {
                     <a className="grow h-full text-sm text-slate-50 pl-2">클릭 통계</a>
                 </div>
                 <ul className="w-full list-inside list-disc py-2">
-                    <li className="text-xs font-thin text-slate-50 break-all">Today: {todayClicked}</li>
-                    <li className="text-xs font-thin text-slate-50 break-all">Total: {totalClicked}</li>
+                    <li className="text-xs font-thin text-slate-50 break-all">Today: {todayClicked.toLocaleString()}</li>
+                    <li className="text-xs font-thin text-slate-50 break-all">Total: {totalClicked.toLocaleString()}</li>
                 </ul>
             </div>
         </div>
