@@ -73,8 +73,6 @@ export default function Home() {
           .rpc('update_location_score', { rowid: _id, click: scoreRef.current })
       } catch (e) {
           console.log(e)
-      } finally {
-        scoreRef.current = 0;
       }
   }
 
