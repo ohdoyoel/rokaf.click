@@ -21,7 +21,6 @@ export default function Home() {
 
   useEffect(() => {
     scoreRef.current = score
-    console.log(new Date())
   }, [score])
 
   // as location id change, call getLocationScore
@@ -38,6 +37,8 @@ export default function Home() {
           .rpc('update_location_score', { rowid: _id, click: scoreRef.current })
       } catch (e) {
           console.log(e)
+      } finally {
+        scoreRef.current = 0;
       }
   }
 
@@ -46,7 +47,7 @@ export default function Home() {
       locationIdRef.current != 0 && postLocationScore(locationIdRef.current)
   }, [locationId])
   
-  // post onbeforeunload
+  // post onbeforeunload && post by 5 seconds
   useEffect(() => {
     const handleOnBeforeUnload = (event: BeforeUnloadEvent) => {
       if (!promptRef.current) {
