@@ -24,7 +24,7 @@ export const Card = () => {
                     <li className="text-xs font-thin text-slate-50 text-justify break-all">본 저작물은 &lsquo;공군이 내놓은 디자인&rsquo;에서 &lsquo;2023년&rsquo; 작성하여 공공누리 2유형으로 개방한 &lsquo;뚠뚠이 의복캐릭터 (작성자: 병장 이성선)&rsquo;을 이용하였으며 해당 저작물은 &lsquo;공군이 내놓은 디자인, https://afplay2.tistory.com/131&rsquo;에서 무료로 다운받으실 수 있습니다.</li>
                     <li className="text-xs font-thin text-slate-50 text-justify break-all">본 저작물은 &lsquo;공군이 내놓은 디자인&rsquo;에서 &lsquo;2023년&rsquo; 작성하여 공공누리 2유형으로 개방한 &lsquo;대한민국공군 전용서체 (작성자: 대한민국공군)&rsquo;을 이용하였으며 해당 저작물은 &lsquo;공군이 내놓은 디자인, https://afplay2.tistory.com/115&rsquo;에서 무료로 다운받으실 수 있습니다.</li>
                     <li className="text-xs font-thin text-slate-50 text-justify break-all">이 서비스의 부대 정보는 &lsquo;나무위키 공군 편제 (https://namu.wiki/w/대한민국%20공군/편제)&rsquo;와 &lsquo;위키백과 대한민국 공군의 부대 및 편성 목록 (https://ko.wikipedia.org/wiki/대한민국_공군의_부대_및_편성_목록)&rsquo; 문서에 공개되어 있는 정보를 참고하여 작성했습니다.</li>
-                    <li className="text-xs font-thin text-slate-50 text-justify break-all">클릭 수는 서버에 자동으로 (실시간으로) 반영되지 않습니다. "새로고침", "창닫기" 또는 "부대 바꾸기"를 하셔야 서버에 점수가 반영됩니다. 서비스 이용에 주의를 바랍니다. (빠른 시일내에 개선하도록 하겠습니다 ㅠㅠ)</li>
+                    <li className="text-xs font-thin text-slate-50 text-justify break-all">클릭 수는 서버에 자동으로 (실시간으로) 반영되지 않습니다. &lsquo;새로고침&rsquo;, &lsquo;창닫기&rsquo; 또는 &lsquo;부대 바꾸기&rsquo;를 하셔야 서버에 점수가 반영됩니다. 서비스 이용에 주의를 바랍니다. (빠른 시일내에 개선하도록 하겠습니다 ㅠㅠ)</li>
                 </ul>
             </div>
         </div>
