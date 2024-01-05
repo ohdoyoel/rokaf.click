@@ -33,10 +33,9 @@ export default function Home() {
   
   // post location score
   const postLocationScore = async (_id: number) => {
-      // console.log(`POST id: ${_id} locationScore: ${locationScoreRef.current}, score: ${scoreRef.current}`)
       try {
-		const { data, error } = await supabase
-			.rpc('update_location_score', { rowid: _id, countvalue: scoreRef.current })
+        const { data, error } = await supabase
+          .rpc('update_location_score', { rowid: _id, click: scoreRef.current })
       } catch (e) {
           console.log(e)
       }
