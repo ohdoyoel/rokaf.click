@@ -33,11 +33,11 @@ export const CharacterButtonWithScore = ({next, id, locationId, _setScore}: Char
     }
 
     useEffect(() => {
-            let timer = setTimeout(() => setPing(false), 500)
-            return () => {
-                clearTimeout(timer)
-                setPing(true)
-            };
+        let timer = setTimeout(() => setPing(false), 300)
+        return () => {
+            clearTimeout(timer)
+            setPing(true)
+        };
     }, [next, locationId])
 
     useEffect(() => {

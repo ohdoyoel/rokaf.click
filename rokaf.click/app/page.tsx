@@ -35,7 +35,7 @@ export default function Home() {
                     Infinity]
 
   const clickToLimit = (click: number) => {
-    console.log(clickStep)
+    // console.log(clickStep)
     let res = 0
     for (let i = 0; i < clickStep.length; ++i) {
       if (clickStep[i] > click + 1) {
@@ -68,6 +68,7 @@ export default function Home() {
   
   // post location score
   const postLocationScore = async (_id: number) => {
+      if (scoreRef.current == 0) return
       try {
         const { data, error } = await supabase
           .rpc('update_location_score', { rowid: _id, click: scoreRef.current })
@@ -88,8 +89,9 @@ export default function Home() {
         promptRef.current = true;
         locationIdRef.current != 0 && postLocationScore(locationIdRef.current);
       }
-      event.preventDefault()
-      return (event.returnValue = '')
+      // dialogue
+      // event.preventDefault()
+      // return (event.returnValue = '')
     }
     if (typeof window != "undefined") {
       window.addEventListener("beforeunload", handleOnBeforeUnload, {capture: true});

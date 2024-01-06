@@ -31,10 +31,18 @@ export const Statistics = () => {
         
         let now = new Date();
         now.setHours(0, 0, 0, 0);
+        now.setHours(now.getHours() + 9)
+        let next = new Date()
+        next.setHours(0, 0, 0, 0);
+        next.setDate(next.getDate() + 1)
+        next.setHours(next.getHours() + 9)
+        // console.log(now.toISOString())
+        // console.log(next.toISOString())
         let { data: fetchedTodayClick } = await supabase
             .from('clicks')
-            .select('click')
+            .select('id,created_at,click')
             .gte('created_at', now.toISOString())
+            .lt('created_at', next.toISOString())
         fetchedTodayClick && setTodayClick(fetchedTodayClick)
     }
 

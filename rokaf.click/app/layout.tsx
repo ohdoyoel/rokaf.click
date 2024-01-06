@@ -30,7 +30,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'rokaf.click',
     description: '공군 부대 간 클릭 수로 경쟁합니다.',
-  }
+    images: '/icons/android-icon-192x192.png',
+  },
 }
 
 export default function RootLayout({
