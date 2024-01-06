@@ -44,7 +44,7 @@ export const CharacterButtonWithScore = ({next, id, locationId, _setScore}: Char
       setScore(0)
     }, [locationId])
     
-    const characterButtonClick = async () => {
+    const characterButtonClick = () => {
         if (locationId == 0) {
             window.alert("부대를 선택해주세요")
         } else {
