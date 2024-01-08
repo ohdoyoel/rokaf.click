@@ -68,7 +68,7 @@ export default function Home() {
   
   // post location score
   const postLocationScore = async (_id: number) => {
-      // if (scoreRef.current == 0) return
+      if (scoreRef.current == 0) return
       try {
         const { data, error } = await supabase
           .rpc('update_location_score', { rowid: _id, click: scoreRef.current })
