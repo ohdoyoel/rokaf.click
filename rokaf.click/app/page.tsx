@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Header } from '@/src/components/atoms/Header'
 import { CharacterButtonWithScore } from '@/src/components/organisms/CharacterButtonWithScore'
@@ -17,6 +18,7 @@ export default function Home() {
   const locationIdRef = useRef(0)
   const [score, setScore] = useState(0)
   const scoreRef = useRef(0)
+  const router = useRouter();
   // const locationScoreRef = useRef(-1000)
   const promptRef = useRef(false)
 //   const clickStep = [2,
@@ -68,7 +70,6 @@ export default function Home() {
   
   // post location score
   const postLocationScore = async (_id: number) => {
-      if (scoreRef.current == 0) return
       try {
         const { data, error } = await supabase
           .rpc('update_location_score', { rowid: _id, click: scoreRef.current })
@@ -87,15 +88,16 @@ export default function Home() {
     const handleOnBeforeUnload = (event: BeforeUnloadEvent) => {
       if (!promptRef.current) {
         promptRef.current = true;
-        locationIdRef.current != 0 && postLocationScore(locationIdRef.current);
+        if (locationIdRef.current != 0 && scoreRef.current != 0) {
+          postLocationScore(locationIdRef.current);
+          // event.preventDefault()
+          // event.returnValue = ''
+          // return "나가는 중..."
+        }
       }
-      // dialogue
-      // event.preventDefault()
-      // return (event.returnValue = '')
     }
     if (typeof window != "undefined") {
-      window.addEventListener("beforeunload", handleOnBeforeUnload, {capture: true});
-      return () => {window.removeEventListener("beforeunload", handleOnBeforeUnload, {capture: true})}
+      window.onbeforeunload = handleOnBeforeUnload
     }
   }, [])
 
