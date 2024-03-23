@@ -90,9 +90,9 @@ export default function Home() {
         promptRef.current = true;
         if (locationIdRef.current != 0 && scoreRef.current != 0) {
           postLocationScore(locationIdRef.current);
-          // event.preventDefault()
-          // event.returnValue = ''
-          // return "나가는 중..."
+          event.preventDefault()
+          event.returnValue = ''
+          return "나가는 중... 취소 버튼을 누르지 마세요"
         }
       }
     }
