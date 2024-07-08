@@ -17,6 +17,9 @@ export default function Home() {
   const [locationId, setLocationId] = useState(0)
   const locationIdRef = useRef(0)
   const [score, setScore] = useState(0)
+  const [currentMiliseconds, setCurrentMiliseconds] = useState(0)
+  const [recentClickedMiliseconds, setRecentClickedMiliseconds] = useState(0)
+  const [needToUpdate, setNeedToUpdate] = useState(false)
   const scoreRef = useRef(0)
   const router = useRouter();
   // const locationScoreRef = useRef(-1000)
@@ -49,12 +52,34 @@ export default function Home() {
   }
 
   useEffect(() => {
+    const timer = setInterval(() => {
+      const curDate = new Date()
+      setCurrentMiliseconds(curDate.getTime())
+    }, 10)
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    if (currentMiliseconds - recentClickedMiliseconds >= 500 && needToUpdate) {
+      locationIdRef.current != 0 && postLocationScore(locationIdRef.current)
+      console.log('post', scoreRef.current)
+      scoreRef.current = 0
+      setNeedToUpdate(false)
+    }
+  }, [currentMiliseconds])
+
+  useEffect(() => {
     const _limit = clickToLimit(scoreRef.current)
     imageIdLimit < _limit && setImageIdLimit(_limit)
+
+    if (scoreRef.current != 0){
+      setRecentClickedMiliseconds(currentMiliseconds)
+      setNeedToUpdate(true)
+    }
   }, [scoreRef.current])
 
   useEffect(() => {
-    scoreRef.current = score
+    scoreRef.current++
   }, [score])
 
   useEffect(() => {
@@ -79,27 +104,27 @@ export default function Home() {
   }
 
   // as location id change, call postLocationScore
-  useLayoutEffect(() => {
-      locationIdRef.current != 0 && postLocationScore(locationIdRef.current)
-  }, [locationId])
+  // useLayoutEffect(() => {
+  //     locationIdRef.current != 0 && postLocationScore(locationIdRef.current)
+  // }, [locationId])
   
   // post onbeforeunload && post by 5 seconds
-  useEffect(() => {
-    const handleOnBeforeUnload = (event: BeforeUnloadEvent) => {
-      if (!promptRef.current) {
-        promptRef.current = true;
-        if (locationIdRef.current != 0 && scoreRef.current != 0) {
-          postLocationScore(locationIdRef.current);
-          event.preventDefault()
-          event.returnValue = ''
-          return "나가는 중... 취소 버튼을 누르지 마세요"
-        }
-      }
-    }
-    if (typeof window != "undefined") {
-      window.onbeforeunload = handleOnBeforeUnload
-    }
-  }, [])
+  // useEffect(() => {
+  //   const handleOnBeforeUnload = (event: BeforeUnloadEvent) => {
+  //     if (!promptRef.current) {
+  //       promptRef.current = true;
+  //       if (locationIdRef.current != 0 && scoreRef.current != 0) {
+  //         postLocationScore(locationIdRef.current);
+  //         event.preventDefault()
+  //         event.returnValue = ''
+  //         return "나가는 중... 취소 버튼을 누르지 마세요"
+  //       }
+  //     }
+  //   }
+  //   if (typeof window != "undefined") {
+  //     window.onbeforeunload = handleOnBeforeUnload
+  //   }
+  // }, [])
 
   return (
     <main id="root" className="flex flex-col items-center justify-between w-screen h-screen pt-16 pb-24">
