@@ -5,13 +5,13 @@ import { CharacterButton } from "@/src/components/molecules/CharacterButton";
 import { Score } from "@/src/components/atoms/Score";
 
 interface CharacterButtonWithScoreProps {
-    next: number
+    nextScore: number
     id: number
     locationId : number
     _setScore: Dispatch<SetStateAction<number>>
 }
 
-export const CharacterButtonWithScore = ({next, id, locationId, _setScore}: CharacterButtonWithScoreProps) => {
+export const CharacterButtonWithScore = ({nextScore, id, locationId, _setScore}: CharacterButtonWithScoreProps) => {
     const [score, setScore] = useState(0)
     const [size, setSize] = useState(0)
     const [ping, setPing] = useState(false)
@@ -38,7 +38,7 @@ export const CharacterButtonWithScore = ({next, id, locationId, _setScore}: Char
             clearTimeout(timer)
             setPing(true)
         };
-    }, [next, locationId])
+    }, [nextScore, locationId])
 
     useEffect(() => {
       setScore(0)
@@ -60,9 +60,9 @@ export const CharacterButtonWithScore = ({next, id, locationId, _setScore}: Char
                         flex flex-col items-center`}>
             <Score score={score}/>
             <CharacterButton id={id} size={size} onClick={characterButtonClick}/>
-            {next < 0
+            {nextScore < 0
             ? <p className='text-center text-md'>모든 캐릭터 획득! 당신은 자랑스러운 공군인이에요</p>
-            : <p className='text-center text-md'>다음 캐릭터 획득까지 {next - score} 클릭 남음</p>}
+            : <p className='text-center text-md'>다음 캐릭터 획득까지 {nextScore - score} 클릭 남음</p>}
         </div>
     )
 }
