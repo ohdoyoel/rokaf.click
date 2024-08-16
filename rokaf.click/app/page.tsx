@@ -79,10 +79,6 @@ export default function Home() {
   }, [scoreRef.current])
 
   useEffect(() => {
-    scoreRef.current++
-  }, [score])
-
-  useEffect(() => {
     setImageId(imageIdLimit)
   }, [imageIdLimit])
 
