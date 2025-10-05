@@ -1,22 +1,54 @@
-import axios from "axios"
+import { supabase } from "@/app/lib/initSupabase"
 import React, { useEffect, useState } from "react"
 
 export const Statistics = () => {
-    const [todayClicked, setTodayClicked] = useState(0)
-    const [totalClicked, setTotalClicked] = useState(0)
+    const [todayClick, setTodayClick] = useState<{click:any}[]>([])
+    const [totalClick, setTotalClick] = useState<{click:any}[]>([])
+    const [todayClicked, setTodayClicked] = useState<number>(-1)
+    const [totalClicked, setTotalClicked] = useState<number>(-1)
+
+    useEffect(() => {
+        let total = 0;
+        totalClick && totalClick.forEach((c) => {
+            total += c.click;
+        })
+        totalClick && setTotalClicked(total)
+    }, [totalClick])
+
+    useEffect(() => {
+        let today = 0;
+        todayClick && todayClick.forEach((c) => {
+            today += c.click;
+        })
+        todayClick && setTodayClicked(today)
+    }, [todayClick])
+
+    const fetchStat = async () => {
+        let { data: fetchedTotalClick } = await supabase
+            .from('clicks')
+            .select('click')
+        fetchedTotalClick && setTotalClick(fetchedTotalClick)
+        
+        let now = new Date();
+        now.setHours(0, 0, 0, 0);
+        now.setHours(now.getHours() + 9)
+        let next = new Date()
+        next.setHours(0, 0, 0, 0);
+        next.setDate(next.getDate() + 1)
+        next.setHours(next.getHours() + 9)
+        // console.log(now.toISOString())
+        // console.log(next.toISOString())
+        let { data: fetchedTodayClick } = await supabase
+            .from('clicks')
+            .select('id,created_at,click')
+            .gte('created_at', now.toISOString())
+            .lt('created_at', next.toISOString())
+        fetchedTodayClick && setTodayClick(fetchedTodayClick)
+    }
 
     // get statistics
     useEffect(() => {
-        const fetchStat = async () => {
-            const response = await axios.get(
-                process.env.NEXT_PUBLIC_API_BASE_PATH + `clicked`,
-            )
-            return response.data
-        }
-        fetchStat().then((res) => {
-            setTodayClicked(res.today)
-            setTotalClicked(res.total)
-        })
+        fetchStat()
     }, [])
 
     return (

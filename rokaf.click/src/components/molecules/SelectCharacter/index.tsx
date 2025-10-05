@@ -2,15 +2,15 @@ import { Dispatch, SetStateAction } from "react";
 import { CharacterItem } from "@/src/components/molecules/CharacterItem";
 
 interface SelectImageProps {
+    limit: number
     setImageId: Dispatch<SetStateAction<number>>
 }
 
-export const SelectCharacter = ({setImageId}:SelectImageProps) => {
+export const SelectCharacter = ({limit, setImageId}:SelectImageProps) => {
     const CharacterList = () => {
-        const characterCandidates = Array.from({length: 54}, (_, i) => i + 1)
-        // [1, 2, 9, 19, 20, 21, 24, 25, 26, 27, 47, 54]
         const result = []
-        for (const i of characterCandidates) {
+        for (let i = 1; i <= limit; ++i) {
+            if (i === 45) continue
             result.push(<CharacterItem key={i} setImageId={setImageId} id={i} size={80}/>)
         }
         return result

@@ -3,10 +3,11 @@ import { SideBar } from "@/src/components/atoms/SideBar"
 import { SelectCharacter } from "@/src/components/molecules/SelectCharacter"
 
 interface CharacterBarProps {
+    limit: number
     setImageId: Dispatch<SetStateAction<number>>
 }
 
-export const CharacterBar = ({setImageId}: CharacterBarProps) => {
+export const CharacterBar = ({limit, setImageId}: CharacterBarProps) => {
     return (
         <div className='absolute inset-y-36 right-0 rounded-l-lg
                         w-12 sm:w-16 md:w-20 transition-all ease-in-out duration-150 hover:w-2/3 sm:hover:w-1/2 lg:hover:w-1/3
@@ -22,7 +23,7 @@ export const CharacterBar = ({setImageId}: CharacterBarProps) => {
                     <p className="font-medium text-3xl text-center">택</p>
                 </div>
                 <div className="hidden group-hover:block">
-                    <SelectCharacter setImageId={setImageId}/>
+                    <SelectCharacter limit={limit} setImageId={setImageId}/>
                 </div>
             </SideBar>
         </div>

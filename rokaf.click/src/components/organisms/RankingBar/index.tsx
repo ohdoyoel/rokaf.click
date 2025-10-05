@@ -4,6 +4,7 @@ import { RankingItem } from "@/src/components/atoms/RankingItem"
 import { Location } from "@/src/types/data"
 import axios from "axios"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { supabase } from "@/app/lib/initSupabase"
 
 interface RankingBarProps {
     locationId: number
@@ -24,20 +25,23 @@ export const RankingBar = ({locationId, score}: RankingBarProps) => {
         setLocationScore(locationScore + 1)
     }, [score])
 
-    useEffect(() => {
-        const fetchSortedLocations = async () => {
-            try {
-                setError(false);
-                setLoading(true);
-                const response = await axios.get(
-                    process.env.NEXT_PUBLIC_API_BASE_PATH + "locations/sort",
-                );
-                setSortedLocations(response.data);
-            } catch (e) {
-                setError(true)
-            }
+    const fetchSortedLocations = async () => {
+        try {
+            setError(false);
+            setLoading(true);
+            let { data: sortedLocations, error } = await supabase
+                .from('locations')
+                .select('*')
+                .order('score', { ascending: false });
+            sortedLocations && setSortedLocations(sortedLocations)
+        } catch (e) {
+            setError(true)
+        } finally {
             setLoading(false)
-        };
+        }
+    };
+
+    useEffect(() => {
         fetchSortedLocations();
     }, []);
 
